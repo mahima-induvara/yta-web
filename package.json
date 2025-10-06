@@ -5,7 +5,7 @@
   "scripts": {
     "sync": "node ./scripts/fetch-airtable.js",
     "dev": "npm run sync && astro dev",
-    "build": "pm run sync && astro build",
+    "build": "npm run sync && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
