@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
 
-import netlify from '@astrojs/netlify';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,5 +22,5 @@ export default defineConfig({
   },
 
   integrations: [react()],
-  adapter: netlify()
+  adapter: vercel(),
 });
