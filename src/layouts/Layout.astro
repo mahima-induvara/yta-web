@@ -1,0 +1,64 @@
+---
+import Header from "@components/Header.astro"
+import Footer from "@components/Footer.astro"
+import "@styles/global.css";
+import { SEO } from 'astro-seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Your team In Asia", description = "Help British brands hire, pay and manage high-performance offshore teams in Sri Lanka. Reduce operational costs by 60%+ while maintaining UK quality standards." } : Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+			<SEO
+			title={title}
+			description={description}
+			openGraph={{
+				basic: {
+					title: title,
+					type: "website",
+					image: "https://yourteaminasia.co.uk/og-image.jpg",
+				},
+				optional: {
+					description: description,
+				},
+			}}
+			twitter={{
+				creator: "@yourteaminasia",
+				card: "summary_large_image",
+			}}
+			extend={{
+				meta: [
+					{ name: "generator", content: Astro.generator },
+				],
+			}}
+		/>
+		
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header/>
+		<slot />
+		<Footer/>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>

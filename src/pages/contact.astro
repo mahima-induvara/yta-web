@@ -1,0 +1,23 @@
+---
+import "@styles/contact.scss";
+import Layout from "@layouts/Layout.astro";
+import ContactSection from "@components/ContactForm";
+---
+
+<Layout title="Contact Us - Your Team in Asia" description="Get in touch with Your Team in Asia to learn how we can help your UK business build a high-performing remote team in Sri Lanka. Contact us today for more information.">
+  <section class="contact-root relative py-16 px-4 sm:px-6 lg:px-8">
+    <ContactSection client:load />
+  </section>
+ <section class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
+        <div class="text-center max-w-4xl mx-auto">
+        <h2 class="ind-title text-3xl sm:text-4xl font-semibold">
+          Schedule a <span class="accent">Discovery Call</span>
+        </h2>
+        <p class="ind-sub mt-3 text-base">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/mewan-yourteaminasia/30min?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+ </section>
+</Layout>

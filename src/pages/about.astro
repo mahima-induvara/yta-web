@@ -1,0 +1,580 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/about.scss";
+import ContactDrawer from "@components/ContactDrawer";
+import faces from "@assets/faces.png";
+import team from "@assets/about-img-full.png";
+import member1 from "@assets/team/member-1.png";
+import member2 from "@assets/team/member-2.png";
+import member3 from "@assets/team/member-3.png";
+import member4 from "@assets/team/member-4.png";
+import member5 from "@assets/team/member-5.png";
+import member6 from "@assets/team/member-6.png";
+import member7 from "@assets/team/member-7.png";
+import RowTeam from "@assets/team-row.png";
+import TharakaImg from "@assets/tharaka.jpg";
+import Img2017 from "@assets/2017.png";
+import Img2020 from "@assets/2020.png";
+import Img2022 from "@assets/2022.png";
+import Img2025 from "@assets/2025.png";
+import client1 from "@assets/client-1.png";
+import TeamA from "@assets/left-team.png";
+import TeamB from "@assets/right-team.png";
+
+interface Props {
+  imgSrc?: string;
+  imgAlt?: string;
+  ctaHref?: string;
+  ctaText?: string;
+}
+
+const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
+const { imgSrc = team.src, imgAlt = "Happy remote team" } = Astro.props;
+
+const experts = [
+  { name: "Emily Chen", role: "Marketing", img: member1.src },
+  { name: "Emily Chen", role: "Admin support", img: member2.src },
+  { name: "Emily Chen", role: "Software development", img: member3.src },
+  { name: "Emily Chen", role: "Marketing", img: member4.src },
+  { name: "Emily Chen", role: "Admin support", img: member5.src },
+  { name: "Emily Chen", role: "Software development", img: member6.src },
+  { name: "Emily Chen", role: "Marketing", img: member7.src },
+];
+
+const industriesWithDetails = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M2 22H22" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 2H7C4 2 3 3.79 3 6V22H21V6C21 3.79 20 2 17 2Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14.0602 15H9.93022C9.42022 15 8.99023 15.42 8.99023 15.94V22H14.9902V15.94C15.0002 15.42 14.5802 15 14.0602 15Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 6V11" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.5 8.5H14.5" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Transparency",
+    body: "Open, honest, ethical in all dealings, ensuring clear communication and accountability.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33317 14.1251H5.17484C2.3665 14.1251 1.6665 13.4251 1.6665 10.6167V5.61673C1.6665 2.8084 2.3665 2.1084 5.17484 2.1084H13.9498C16.7582 2.1084 17.4582 2.8084 17.4582 5.61673" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.3335 17.8917V14.125" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.6665 10.7917H8.33317" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.6167 17.8916H8.33337" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.3336 10.6666V15.425C18.3336 17.4 17.8419 17.8916 15.8669 17.8916H12.9086C10.9336 17.8916 10.4419 17.4 10.4419 15.425V10.6666C10.4419 8.69162 10.9336 8.19995 12.9086 8.19995H15.8669C17.8419 8.19995 18.3336 8.69162 18.3336 10.6666Z" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.3706 15.2084H14.3781" stroke="#90FCFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    title: "Reliability",
+    body: "Delivering consistent, high-quality offshore solutions that our clients can depend on.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3335 5.00008V7.01675C18.3335 8.33342 17.5001 9.16675 16.1835 9.16675H13.3335V3.34175C13.3335 2.41675 14.0918 1.66675 15.0168 1.66675C15.9252 1.67508 16.7585 2.04175 17.3585 2.64175C17.9585 3.25008 18.3335 4.08341 18.3335 5.00008Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 5.83341V17.5001C1.6665 18.1917 2.44982 18.5834 2.99982 18.1667L4.42484 17.1001C4.75817 16.8501 5.22484 16.8834 5.52484 17.1834L6.90815 18.5751C7.23315 18.9001 7.76652 18.9001 8.09152 18.5751L9.49152 17.1751C9.78318 16.8834 10.2498 16.8501 10.5748 17.1001L11.9999 18.1667C12.5499 18.5751 13.3332 18.1834 13.3332 17.5001V3.33341C13.3332 2.41675 14.0832 1.66675 14.9998 1.66675H5.83317H4.99984C2.49984 1.66675 1.6665 3.15841 1.6665 5.00008V5.83341Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 7.5H10" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.625 10.8333H9.375" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Understanding",
+    body: "Bridging British business practices with Sri Lankan talent.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3335 5.00008V7.01675C18.3335 8.33342 17.5001 9.16675 16.1835 9.16675H13.3335V3.34175C13.3335 2.41675 14.0918 1.66675 15.0168 1.66675C15.9252 1.67508 16.7585 2.04175 17.3585 2.64175C17.9585 3.25008 18.3335 4.08341 18.3335 5.00008Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 5.83341V17.5001C1.6665 18.1917 2.44982 18.5834 2.99982 18.1667L4.42484 17.1001C4.75817 16.8501 5.22484 16.8834 5.52484 17.1834L6.90815 18.5751C7.23315 18.9001 7.76652 18.9001 8.09152 18.5751L9.49152 17.1751C9.78318 16.8834 10.2498 16.8501 10.5748 17.1001L11.9999 18.1667C12.5499 18.5751 13.3332 18.1834 13.3332 17.5001V3.33341C13.3332 2.41675 14.0832 1.66675 14.9998 1.66675H5.83317H4.99984C2.49984 1.66675 1.6665 3.15841 1.6665 5.00008V5.83341Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 7.5H10" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.625 10.8333H9.375" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Scalability",
+    body: "Helping clients grow with flexible, efficient teams that can expand, or contract based on needs.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3335 5.00008V7.01675C18.3335 8.33342 17.5001 9.16675 16.1835 9.16675H13.3335V3.34175C13.3335 2.41675 14.0918 1.66675 15.0168 1.66675C15.9252 1.67508 16.7585 2.04175 17.3585 2.64175C17.9585 3.25008 18.3335 4.08341 18.3335 5.00008Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 5.83341V17.5001C1.6665 18.1917 2.44982 18.5834 2.99982 18.1667L4.42484 17.1001C4.75817 16.8501 5.22484 16.8834 5.52484 17.1834L6.90815 18.5751C7.23315 18.9001 7.76652 18.9001 8.09152 18.5751L9.49152 17.1751C9.78318 16.8834 10.2498 16.8501 10.5748 17.1001L11.9999 18.1667C12.5499 18.5751 13.3332 18.1834 13.3332 17.5001V3.33341C13.3332 2.41675 14.0832 1.66675 14.9998 1.66675H5.83317H4.99984C2.49984 1.66675 1.6665 3.15841 1.6665 5.00008V5.83341Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 7.5H10" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.625 10.8333H9.375" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Talent",
+    body: "English-speaking professionals ready to perform, carefully selected to meet high standards.",
+  },
+];
+
+type Item = {
+  year: string;
+  title: string;
+  body: string;
+  img: string;
+};
+
+const items: Item[] = [
+  {
+    year: "2017",
+    title: "Care Hires MVP",
+    body: "Founder Tharaka De Alwis secures an initial contract to develop the MVP of Care Hires, leading to its first seed round. The development team expands to 5.",
+    img: Img2017.src,
+  },
+  {
+    year: "2020",
+    title: "Team Expansion",
+    body: "Care Hires team grows to 15, including customer support and finance teams. YTA acquires new clients in the care sector.",
+    img: Img2020.src,
+  },
+  {
+    year: "2022",
+    title: "Service Expansion",
+    body: "YTA expands services to include marketing, account management, sales development, and HR operations. A new co-working office space is established.",
+    img: Img2022.src,
+  },
+  {
+    year: "Today",
+    title: "Continued Growth",
+    body: "YTA employs over 150 skilled professionals, supporting more than 30+ UK businesses. We continue to help clients reduce costs, scale operations, and achieve sustainable growth.",
+    img: Img2025.src,
+  },
+];
+
+interface Props {
+  name?: string;
+  role?: string;
+  imgUrl?: string;
+  quote?: string;
+}
+
+const {
+  name = "Tharaka De Alwis",
+  role = "CEO, YTA",
+  imgUrl = TharakaImg.src,
+  quote = "Our team in Asia has become an indispensable part of our business. The talent quality is exceptional, and they've helped us scale operations far more efficiently than we ever could have on our own.",
+} = Astro.props;
+---
+
+<Layout title="About Us - Your Team in Asia" description="Discover how Your Team in Asia helps UK businesses build high-performing remote teams in Sri Lanka. Learn about our journey, values, and the talented professionals we connect you with.">
+  <section
+    id="about-banner"
+    class="relative overflow-hidden bg-[#5271FF] text-white"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mx-auto text-center"
+      >
+        <!-- LEFT: Copy -->
+        <div class="lg:col-span-full space-y-6">
+          <div
+            class="inline-flex items-center gap-2 py-1 text-sm faces-wrapper"
+          >
+            <img src={faces.src} alt="" />
+            <span class="font-medium">800+ Full-Time Hires, Ready to Scale With You</span>
+          </div>
+
+          <h1 class="yta-about-main-text">
+            Talent is everywhere, opportunity<br />
+            should be too
+          </h1>
+
+          <p class="text-lg text-white/80 max-w-xl mx-auto">
+            Remote eliminates barriers to international hiring so great
+            companies can work with great people, no matter where those people
+            are.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="/contact"
+              class="contact-btn px-6 py-3 hover:opacity-90 w-auto inline-flex items-center gap-2"
+            >
+              Contact us<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M4.1665 10H15.8332"
+                  stroke="#5271FF"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M10 4.16663L15.8333 9.99996L10 15.8333"
+                  stroke="#5271FF"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Image grid with floating labels -->
+        <!-- <div
+        class="lg:col-span-6 relative"
+        style=`background-image: url('${ServiceBanner.src}'); background-size: cover; background-position: center; width: 100%; height: 100%; border-radius: 1rem;'`
+      >
+  
+      </div> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="hpt-root">
+    <div
+      class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-0 lg:py-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+    >
+      <!-- Left: Image -->
+      <div class="lg:col-span-6 about-top-left">
+        <!-- <img
+          src={imgSrc}
+          alt={imgAlt}
+          class="hpt-photo w-full h-auto object-cover"
+        /> -->
+      </div>
+
+      <!-- Right: Copy -->
+      <div class="lg:col-span-6">
+        <h2 class="hpt-title">
+          Build High-Performing <span class="accent">Remote Teams</span>
+        </h2>
+
+        <p class="hpt-intro">
+         Whether you're rapidly scaling your operations, searching for niche skills, or striving to optimize costs, we unlock the full potential of a borderless talent pool for you.
+        </p>
+        <img src={imgSrc} alt={imgAlt} class="hpt-photo w-full h-auto object-cover block lg:hidden" />
+
+        <div class="hpt-body">
+          <p>
+            Our team has helped businesses of all sizes navigate the complexities of remote work. We’ll guide you through a streamlined hiring process designed to find the perfect fit,professionals who will seamlessly integrate into your workflow and increase your team’s productivity.
+          </p>
+
+          <p>
+            We understand that a high-performing remote team is more than just a collection of talented individuals. That’s why we specialize in finding exceptional professionals from the global market and matching them to your company’s unique needs and culture.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experts-section" class="yta-experts relative">
+    <!-- Background placeholder -->
+    <div class="experts-bg absolute inset-0" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <header class="text-left mb-10">
+        <h2 class="text-3xl sm:text-4xl font-semibold text-[#111827]">
+          Our <span class="text-[#5271FF]">expert</span>
+        </h2>
+        <p class="mt-3 max-w-4xl text-[#111827]/80 text-base">
+          Our Elite, employment-based administration team brings a wealth of experience and backgrounds,all with high levels of attention to detail. This is why each client and YTA match is unquestionably unique.
+        </p>
+      </header>
+
+      <!-- Horizontal scroll container -->
+      <div id="experts-scroll" class="swiper experts-scroll">
+        <div class="swiper-wrapper">
+        {
+          experts.map((exp) => (
+            <div class="expert-card swiper-slide">
+              <div class="ex-wrapper">
+                <img src={exp.img} alt={exp.name} class="expert-img" />
+              </div>
+              <hr class="border-t border-[#000]" />
+              <div class="expert-info">
+                <h3>{exp.name}</h3>
+                <p>{exp.role}</p>
+              </div>
+            </div>
+          ))
+        }
+        </div>
+      </div>
+
+
+      <!-- Footer note -->
+      <div class="expert-note mt-8 flex-col items-start gap-3">
+        <div class="inline-flex items-center gap-3">
+          <img src={RowTeam.src} alt="More talents" class="w-15" />
+          <p class="font-semibold text-[#111827]">And Many more talents...</p>
+        </div>
+        <div class="des">
+          <p class="text-sm text-[#111827]/80 mt-1">
+            These are some of our most popular backgrounds for YTA. We also have highly specialized backgrounds served on a case-by-case basis. Our team has helped businesses of all sizes navigate the complexities of remote work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey-root relative overflow-hidden">
+    <!-- Background placeholder (replace with your SVG) -->
+    <div
+      class="journey-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <header class="text-center mb-10">
+        <h2 class="jr-title text-3xl sm:text-4xl font-semibold">
+          Our <span class="accent">Journey</span>
+        </h2>
+        <p class="jr-sub mt-3 max-w-2xl mx-auto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </header>
+
+      <ol class="jr-timeline relative">
+        {
+          items.map((it, i) => {
+            const leftSide = i % 2 === 0;
+            return (
+              <li class="jr-row grid grid-cols-1 md:grid-cols-2 gap-8">
+                <figure class={`jr-media ${leftSide ? "" : "md:order-2"}`}>
+                  <img
+                    src={it.img}
+                    alt={`${it.title} photo`}
+                    class="jr-img w-full h-auto object-cover rounded-2xl"
+                  />
+                </figure>
+
+                <div
+                  class={`jr-copy relative ${leftSide ? "md:pl-10" : "md:pr-10 md:order-1"}`}
+                >
+                  <span
+                    class={`jr-dot ${leftSide ? "md:left-0 md:-translate-x-1/2" : "md:right-0 md:translate-x-1/2"}`}
+                    aria-hidden="true"
+                  />
+
+                  <p class="jr-year">
+                    {it.year} - <span class="jr-ttl">{it.title}</span>
+                  </p>
+                  <p class="jr-body">{it.body}</p>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="leadership-root">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <!-- Header -->
+      <header class="text-center mb-10">
+        <h2 class="ldr-title text-3xl sm:text-4xl font-semibold">
+          Our <span class="accent">founder</span>
+        </h2>
+        <p class="ldr-sub mt-2 text-base text-[#111827]/75">
+          Don't just take our word for it, see what our clients have to say about the results we deliver.</p>
+      </header>
+
+      <!-- Quote + Image -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <blockquote class="ldr-quote order-2 lg:order-2">
+          <p class="ldr-text">“{quote}”</p>
+          <footer class="ldr-footer">{name}, {role}</footer>
+        </blockquote>
+
+        <figure class="ldr-media order-1 lg:order-1">
+          <img
+            src={imgUrl}
+            alt={name}
+            class="ldr-img w-full h-80 object-cover rounded-xl"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section id="image-xcard">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-0 lg:py-14">
+         <!-- Header -->
+      <header class="text-center mb-10">
+        <h2 class="ldr-title text-3xl sm:text-4xl font-semibold">
+          Our leadership <span class="accent">team</span>
+        </h2>
+        <p class="ldr-sub mt-2 text-base text-[#111827]/75">
+          Don't just take our word for it, see what our clients have to say about the results we deliver.</p>
+      </header>
+      <div class="team-leaders grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="relative card-teams">
+          <img
+            src={client1.src}
+            alt={name}
+            class="w-full h-[587px] object-cover object-top rounded-xl card-img"
+          />
+          <!-- <div class="absolute inset-0 bg-black opacity-25 rounded-xl"></div> -->
+            <div
+            class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
+          >
+            <div class="bottom-wrapper">
+              <h3 class="text-xl">Jordan Lee</h3>
+              <p class="text-sm">CTO, Co-Founder</p>
+            </div>
+            <a href="#jordan-lee" class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+              >
+                <path
+                  d="M22.2234 0.5H1.77187C0.792187 0.5 0 1.27344 0 2.22969V22.7656C0 23.7219 0.792187 24.5 1.77187 24.5H22.2234C23.2031 24.5 24 23.7219 24 22.7703V2.22969C24 1.27344 23.2031 0.5 22.2234 0.5ZM7.12031 20.9516H3.55781V9.49531H7.12031V20.9516ZM5.33906 7.93438C4.19531 7.93438 3.27188 7.01094 3.27188 5.87187C3.27188 4.73281 4.19531 3.80937 5.33906 3.80937C6.47813 3.80937 7.40156 4.73281 7.40156 5.87187C7.40156 7.00625 6.47813 7.93438 5.33906 7.93438ZM20.4516 20.9516H16.8937V15.3828C16.8937 14.0563 16.8703 12.3453 15.0422 12.3453C13.1906 12.3453 12.9094 13.7938 12.9094 15.2891V20.9516H9.35625V9.49531H12.7687V11.0609H12.8156C13.2891 10.1609 14.4516 9.20938 16.1813 9.20938C19.7859 9.20938 20.4516 11.5813 20.4516 14.6656V20.9516V20.9516Z"
+                  fill="white"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="relative card-teams">
+          <img
+            src={client1.src}
+            alt={name}
+            class="w-full h-[587px] object-cover object-top rounded-xl card-img"
+          />
+          <!-- <div class="absolute inset-0 bg-black opacity-25 rounded-xl"></div> -->
+          <div
+            class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
+          >
+            <div class="bottom-wrapper">
+              <h3 class="text-xl">Jordan Lee</h3>
+              <p class="text-sm">CTO, Co-Founder</p>
+            </div>
+            <a href="#jordan-lee" class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+              >
+                <path
+                  d="M22.2234 0.5H1.77187C0.792187 0.5 0 1.27344 0 2.22969V22.7656C0 23.7219 0.792187 24.5 1.77187 24.5H22.2234C23.2031 24.5 24 23.7219 24 22.7703V2.22969C24 1.27344 23.2031 0.5 22.2234 0.5ZM7.12031 20.9516H3.55781V9.49531H7.12031V20.9516ZM5.33906 7.93438C4.19531 7.93438 3.27188 7.01094 3.27188 5.87187C3.27188 4.73281 4.19531 3.80937 5.33906 3.80937C6.47813 3.80937 7.40156 4.73281 7.40156 5.87187C7.40156 7.00625 6.47813 7.93438 5.33906 7.93438ZM20.4516 20.9516H16.8937V15.3828C16.8937 14.0563 16.8703 12.3453 15.0422 12.3453C13.1906 12.3453 12.9094 13.7938 12.9094 15.2891V20.9516H9.35625V9.49531H12.7687V11.0609H12.8156C13.2891 10.1609 14.4516 9.20938 16.1813 9.20938C19.7859 9.20938 20.4516 11.5813 20.4516 14.6656V20.9516V20.9516Z"
+                  fill="white"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="relative card-teams">
+          <img
+            src={client1.src}
+            alt={name}
+            class="w-full h-[587px] object-cover object-top rounded-xl card-img"
+          />
+          <!-- <div class="absolute inset-0 bg-black opacity-25 rounded-xl"></div> -->
+      <div
+            class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
+          >
+            <div class="bottom-wrapper">
+              <h3 class="text-xl">Jordan Lee</h3>
+              <p class="text-sm">CTO, Co-Founder</p>
+            </div>
+            <a href="#jordan-lee" class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+              >
+                <path
+                  d="M22.2234 0.5H1.77187C0.792187 0.5 0 1.27344 0 2.22969V22.7656C0 23.7219 0.792187 24.5 1.77187 24.5H22.2234C23.2031 24.5 24 23.7219 24 22.7703V2.22969C24 1.27344 23.2031 0.5 22.2234 0.5ZM7.12031 20.9516H3.55781V9.49531H7.12031V20.9516ZM5.33906 7.93438C4.19531 7.93438 3.27188 7.01094 3.27188 5.87187C3.27188 4.73281 4.19531 3.80937 5.33906 3.80937C6.47813 3.80937 7.40156 4.73281 7.40156 5.87187C7.40156 7.00625 6.47813 7.93438 5.33906 7.93438ZM20.4516 20.9516H16.8937V15.3828C16.8937 14.0563 16.8703 12.3453 15.0422 12.3453C13.1906 12.3453 12.9094 13.7938 12.9094 15.2891V20.9516H9.35625V9.49531H12.7687V11.0609H12.8156C13.2891 10.1609 14.4516 9.20938 16.1813 9.20938C19.7859 9.20938 20.4516 11.5813 20.4516 14.6656V20.9516V20.9516Z"
+                  fill="white"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries-root relative overflow-hidden">
+    <!-- Background placeholder -->
+    <div
+      class="industries-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Heading -->
+      <div class="text-center max-w-4xl mx-auto">
+        <h2 class="ind-title text-3xl sm:text-4xl font-semibold">
+          The Trust <span class="accent">Framework</span>
+        </h2>
+        <p class="ind-sub mt-3 text-base sm:text-lg">
+          Our values guide everything we do, from how we work with clients to how we build our teams.
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          industriesWithDetails.map((i) => (
+            <article class="ind-card rounded-2xl p-6">
+              <div class="flex items-center gap-4">
+                {/* <div class="ind-icon" set:html={i.icon} /> */}
+                <h3 class="ind-heading">{i.title}</h3>
+              </div>
+
+              <hr class="my-4 border-t border-dashed border-[#4353FF66]" />
+              <p class="ind-body mt-0">{i.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="yta-cta relative overflow-hidden my-8 py-6">
+    <div
+      class="yta-cta-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+    <img src={TeamA.src} alt="Team A" class="absolute hidden sm:block lg:block bottom-0 left-25" />
+    <img src={TeamB.src} alt="Team B" class="absolute hidden sm:block lg:block bottom-0 right-25" />
+    <div
+      class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 text-center"
+    >
+      <h2 class="cta-title">Hire with Your Team in Asia</h2>
+
+      <p class="cta-sub mt-3 max-w-2xl mx-auto text-base sm:text-lg">
+        At Your Team in Asia, we don’t just fill roles, we help businesses build
+        sustainable offshore teams that deliver lasting results. Take the first
+        step towards smarter, leaner growth today!
+      </p>
+
+      <ContactDrawer client:load />
+      <div class="py-16 h-[360px] block lg:hidden xl:hidden">
+       <img src={TeamA.src} alt="Team A" class="absolute bottom-[-23px] left-0 w-full h-auto" />
+    </div>
+    </div>
+  </section>
+
+  <script>
+  import Swiper from "swiper";
+  import { Autoplay, Navigation } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+
+  const swiperNew = new Swiper(".experts-scroll", {
+    modules: [Autoplay],
+    loop: true,
+    spaceBetween: 20,
+    speed: 3000,
+    slidesPerView: 'auto',
+    allowTouchMove: false,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+     breakpoints: {
+        640: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 },
+      },
+  });
+
+</script>
+
+  <!-- <script is:inline>
+  const scrollContainer = document.getElementById("experts-scroll");
+
+  scrollContainer.addEventListener("wheel", (e) => {
+    e.preventDefault(); // prevent page vertical scroll
+    scrollContainer.scrollLeft += e.deltaY; // scroll sideways instead
+  });
+</script> -->
+
+</Layout>

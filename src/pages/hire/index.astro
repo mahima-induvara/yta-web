@@ -1,0 +1,470 @@
+---
+import Layout from "@layouts/Layout.astro";
+import HireImg from "@assets/hire-img.png";
+import FilterJobs from "@components/SearchJobs";
+import jobsData from "../../data/jobs.json";
+import HireContact from '@components/HireContactFrom'
+// const jobs = Array(6).fill({
+//   title: "Outbound Sales Agent",
+//   benefit: "Save Up to 45% on hiring costs",
+//   tags: ["Full-time", "Remote"],
+//   responsibilities: [
+//     "Make outbound calls to potential customers",
+//     "Present and upsell products or services",
+//     "Record call outcomes and notes in CRM",
+//     "Achieve weekly/monthly sales targets",
+//   ],
+// });
+const jobs = jobsData.map((job: any) => ({
+  title: job.Job_Title,
+  benefit: job.Save_Up,
+  department: job.Job_Department,
+  tags: [job.Job_Type, job.Job_Work_Mode],
+  responsibilities: job.Job_Responsibilities.split("\n").map((item: string) => item.trim()).filter(Boolean),
+  salary_sl: job.Salary_Range_SL,
+  salary_uk: job.Salary_Range_UK,
+  salary_us: job.Salary_Range_US,
+}));
+
+// const industries = [
+//   "All Categories",
+//     "Contact Center",
+//     "Cyber Security",
+//     "Designers",
+//     "Finance & Accounting",
+//     "HR Operations",
+//     "IT Operations",
+//     "Legal Admin",
+//     "Marketing",
+//     "Software Development",
+//     "Virtual Assistants",
+// ];
+
+const points = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M15.4168 16.25H12.0835" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13.75 17.9166V14.5833" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.1332 9.05841C10.0498 9.05008 9.94984 9.05008 9.85817 9.05841C7.87484 8.99175 6.29984 7.36675 6.29984 5.36675C6.2915 3.32508 7.94984 1.66675 9.9915 1.66675C12.0332 1.66675 13.6915 3.32508 13.6915 5.36675C13.6915 7.36675 12.1082 8.99175 10.1332 9.05841Z" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.9917 18.1751C8.47503 18.1751 6.9667 17.7917 5.8167 17.0251C3.80003 15.6751 3.80003 13.4751 5.8167 12.1334C8.10837 10.6001 11.8667 10.6001 14.1584 12.1334" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Top 1% Talent",
+    body: "Highly trained professionals ready for remote success.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.66667 2.5H7.5C5.875 7.36667 5.875 12.6333 7.5 17.5H6.66667" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.5 2.5C14.125 7.36667 14.125 12.6333 12.5 17.5" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2.5 13.3333V12.5C7.36667 14.125 12.6333 14.125 17.5 12.5V13.3333" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2.5 7.5C7.36667 5.875 12.6333 5.875 17.5 7.5" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Timezone Advantage",
+    body: "Overlapping working hours with US, EU, and Asia.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 6V18" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H15C20 2 22 4 22 9V15C22 20 20 22 15 22Z" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Cost-Effective",
+    body: "Save up to 60% vs. Western salaries without sacrificing quality.",
+  },
+];
+
+const industriesWithDetails = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M2 22H22" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 2H7C4 2 3 3.79 3 6V22H21V6C21 3.79 20 2 17 2Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14.0602 15H9.93022C9.42022 15 8.99023 15.42 8.99023 15.94V22H14.9902V15.94C15.0002 15.42 14.5802 15 14.0602 15Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 6V11" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.5 8.5H14.5" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Social Care & Pharmacy",
+    body: "Compliance specialists, administrators, HR and finance professionals",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.33317 14.1251H5.17484C2.3665 14.1251 1.6665 13.4251 1.6665 10.6167V5.61673C1.6665 2.8084 2.3665 2.1084 5.17484 2.1084H13.9498C16.7582 2.1084 17.4582 2.8084 17.4582 5.61673" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.3335 17.8917V14.125" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.6665 10.7917H8.33317" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.6167 17.8916H8.33337" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.3336 10.6666V15.425C18.3336 17.4 17.8419 17.8916 15.8669 17.8916H12.9086C10.9336 17.8916 10.4419 17.4 10.4419 15.425V10.6666C10.4419 8.69162 10.9336 8.19995 12.9086 8.19995H15.8669C17.8419 8.19995 18.3336 8.69162 18.3336 10.6666Z" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.3706 15.2084H14.3781" stroke="#90FCFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    title: "Technology",
+    body: "Software developers, IT support specialists, digital marketers.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3335 5.00008V7.01675C18.3335 8.33342 17.5001 9.16675 16.1835 9.16675H13.3335V3.34175C13.3335 2.41675 14.0918 1.66675 15.0168 1.66675C15.9252 1.67508 16.7585 2.04175 17.3585 2.64175C17.9585 3.25008 18.3335 4.08341 18.3335 5.00008Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 5.83341V17.5001C1.6665 18.1917 2.44982 18.5834 2.99982 18.1667L4.42484 17.1001C4.75817 16.8501 5.22484 16.8834 5.52484 17.1834L6.90815 18.5751C7.23315 18.9001 7.76652 18.9001 8.09152 18.5751L9.49152 17.1751C9.78318 16.8834 10.2498 16.8501 10.5748 17.1001L11.9999 18.1667C12.5499 18.5751 13.3332 18.1834 13.3332 17.5001V3.33341C13.3332 2.41675 14.0832 1.66675 14.9998 1.66675H5.83317H4.99984C2.49984 1.66675 1.6665 3.15841 1.6665 5.00008V5.83341Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 7.5H10" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.625 10.8333H9.375" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Accountancy Firms",
+    body: "Software developers, IT support specialists, cloud engineers, QA testers.",
+  },
+];
+
+type QA = { q: string; a: string };
+
+const faqs: QA[] = [
+  {
+    q: "How is YTA different from traditional BPO providers?",
+    a: "Unlike traditional BPO providers who assign shared teams across multiple clients, YTA provides dedicated employees who work exclusively for your company. Your team members are fully integrated into your organization, use your systems directly, and follow your processes—just like your local staff. This model eliminates common BPO issues like high turnover, inconsistent quality, and lack of accountability.",
+  },
+  {
+    q: "What are the key risks of traditional outsourcing and how does YTA address them?",
+    a: "We remove the risks around compliance, payroll, and quality control with a full-service model that includes hiring, HR, and retention support. You manage outcomes; we handle the busywork.",
+  },
+  {
+    q: "How does YTA's pricing model differ from traditional BPOs?",
+    a: "Transparent monthly pricing with no hidden fees. Your costs cover salary, statutory benefits, taxes, and our management fee—so you can plan with confidence.",
+  },
+  {
+    q: "What about intellectual property protection?",
+    a: "All staff sign airtight IP and confidentiality agreements. We follow strict access controls and can set up isolated environments where needed.",
+  },
+];
+
+const categories = [
+  "All Categories",
+  "Contact Center",
+  "Cyber Security",
+  "Designers",
+  "Finance & Accounting",
+  "HR Operations",
+  "IT Operations",
+  "Legal Admin",
+  "Marketing",
+  "Software Development",
+  "Virtual Assistants",
+];
+
+import "@styles/hire.scss";
+---
+
+<Layout title="Hire Remote Talent - Your Team in Asia" description="Find and hire top remote talent from Europe and Latin America with Your Team in Asia. Access a pool of highly skilled professionals to build your offshore team today.">
+  <!-- Hero Section -->
+  <FilterJobs jobs={jobs} client:load />
+
+  <section class="industries-root relative overflow-hidden">
+    <!-- Background placeholder -->
+    <div
+      class="industries-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Heading -->
+      <div class="text-center max-w-4xl mx-auto">
+        <h2 class="ind-title text-3xl sm:text-4xl font-semibold">
+          Comprehensive Offshore <span class="accent">Benefits</span>
+        </h2>
+        <p class="ind-sub mt-3 text-base sm:text-lg">
+          Our all-inclusive subscription package combines all essential services
+          into one seamless solution. As your dedicated employer of record
+          (EOR), we handle everything from onboarding to managing performance,
+          allowing you to focus on getting things done with your team.
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          industriesWithDetails.map((i) => (
+            <article class="ind-card rounded-2xl p-6">
+              <div class="flex items-center gap-4">
+                <div class="ind-icon" set:html={i.icon} />
+                <h3 class="ind-heading">{i.title}</h3>
+              </div>
+
+              <hr class="my-4 border-t border-dashed border-[#4353FF66]" />
+              <p class="ind-body mt-0">{i.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="ysl-root">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <!-- Heading -->
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="ysl-title text-3xl sm:text-4xl font-semibold">
+          Why <span class="accent">Sri Lanka</span>
+        </h2>
+        <p class="ysl-sub mt-3 text-base sm:text-lg">
+          As a premier talent hub, Sri Lanka offers access to highly skilled professionals with deep technical expertise and a global mindset. You get a workforce ready to integrate seamlessly and contribute from day one.
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- Left: Photo -->
+        <figure class="lg:col-span-6">
+          <img
+            src={HireImg.src}
+            alt="Sri Lankan team"
+            class="ysl-photo w-full h-auto rounded-2xl object-cover"
+          />
+        </figure>
+
+        <!-- Right: Points -->
+        <div class="lg:col-span-6 flex flex-col gap-0 points">
+          {
+            points.map((p) => (
+              <article class="ysl-item p-5 pl-0">
+                <div class="flex-col items-center gap-4">
+                  <span class="ysl-icon mb-4" set:html={p.icon} />
+                  <div class="flex-1">
+                    <h3 class="ysl-item-title">{p.title}</h3>
+                    <p class="ysl-item-body mt-1">{p.body}</p>
+                  </div>
+                </div>
+                {/* <div class="line"></div> */}
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="yta-contact relative overflow-hidden">
+    <!-- <div
+      class="yta-contact-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div> -->
+
+    <div
+      class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10"
+    >
+      <!-- Left -->
+      <div>
+        <h2 class="contact-title">
+          Get in touch with <span class="accent">us</span>
+        </h2>
+        <p class="contact-sub mt-3 text-base max-w-xl">
+          Have questions about building your offshore team? We're here to help!
+          Please share your preferred time for us to reach out to you. We want
+          to ensure our call is convenient and fits seamlessly into your
+          schedule.
+        </p>
+
+        <div class="mt-[40px] lg:mt-[80px] grid sm:grid-cols-2 gap-8">
+          <div class="contact-yta-card">
+            <h3 class="contact-label">Email Us</h3>
+            <p class="contact-text mt-2">
+              If you prefer email, please contact us at the following address.
+            </p>
+            <a
+              href="mailto:hello@yourteaminasia.com"
+              class="contact-link mt-3 block"
+            >
+              hello@yourteaminasia.com
+            </a>
+          </div>
+
+          <div class="contact-yta-card">
+            <h3 class="contact-label">Call Us</h3>
+            <p class="contact-text mt-2">
+              If you prefer call us, please contact us at the following phone
+              number.
+            </p>
+            <a href="tel:+447440207973" class="contact-link mt-3 block">
+              +44 7440 207973
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+       <HireContact client:load />
+      <!-- <form class="yta-form space-y-5">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="flex-col items-start"
+            >Full name
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              class="yta-input"
+              required
+            />
+          </label>
+
+          <label class="flex-col items-start"
+            >Work email
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your work email address"
+              class="yta-input"
+              required
+            />
+          </label>
+        </div>
+        <div class="grid sm:grid-cols-1 gap-4">
+          <label class="flex-col items-start"
+            >Phone number
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Enter your phone number"
+              class="yta-input"
+              required
+            />
+          </label>
+          <label class="flex-col items-start"
+            >Message
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Please describe your requirements"
+              class="yta-input"></textarea>
+          </label>
+        </div>
+        <label class="flex-col items-start">
+          <input type="checkbox" class="mt-1" />
+          <span class="contact-terms mt-2">
+            I consent to receiving information and/or materials from Your Team
+            in Asia (YTA) about its products, services, events and/or
+            information, including latest information on hiring and employment
+            trends. I have read and accept for my personal data to be processed
+            in accordance with YTA’s Privacy Policy.
+          </span>
+        </label>
+
+        <button type="submit" class="btn cta-btn w-full cursor-pointer"
+          >Send message <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+  <path d="M4.66797 10H16.3346" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.5 4.16699L16.3333 10.0003L10.5 15.8337" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></button
+        >
+      </form> -->
+    </div>
+  </section>
+  <section class="yta-faq relative overflow-hidden">
+    <!-- dotted/grid background placeholder -->
+    <div class="faq-bg absolute inset-0 pointer-events-none" aria-hidden="true">
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+      <header class="text-center mb-8">
+        <h2 class="faq-title text-3xl sm:text-4xl font-semibold">
+          Frequently Asked <span class="accent">Questions</span>
+        </h2>
+        <p class="faq-sub mt-3 text-base sm:text-lg">
+          Find answers to the most common questions about hiring, payroll,
+          compliance, and working with Your Team in Asia. If you still need
+          help, please <a href="/contact" class="faq-link">contact us</a>.
+        </p>
+      </header>
+
+      <ul class="faq-list space-y-4">
+        {
+          faqs.map((item, i) => (
+            <li class="faq-item">
+              <button
+                class="faq-trigger"
+                aria-expanded={i === 0 ? "true" : "false"}
+                aria-controls={`faq-panel-${i}`}
+                id={`faq-trigger-${i}`}
+              >
+                <span class="faq-q">{item.q}</span>
+                <svg class="faq-caret" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                </svg>
+              </button>
+
+              <div
+                id={`faq-panel-${i}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${i}`}
+                class={`faq-panel ${i === 0 ? "open" : ""}`}
+              >
+                <p class="faq-a">{item.a}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        var root = document.querySelector(".yta-faq");
+        var triggers = Array.prototype.slice.call(
+          root ? root.querySelectorAll(".faq-trigger") : []
+        );
+        var singleOpen = true;
+
+        function openPanel(btn) {
+          var panel = root.querySelector(
+            "#" + btn.getAttribute("aria-controls")
+          );
+          btn.setAttribute("aria-expanded", "true");
+          if (panel) panel.classList.add("open");
+        }
+        function closePanel(btn) {
+          var panel = root.querySelector(
+            "#" + btn.getAttribute("aria-controls")
+          );
+          btn.setAttribute("aria-expanded", "false");
+          if (panel) panel.classList.remove("open");
+        }
+
+        triggers.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var isOpen = btn.getAttribute("aria-expanded") === "true";
+            if (singleOpen) {
+              triggers.forEach(closePanel);
+            }
+            if (isOpen) {
+              closePanel(btn);
+            } else {
+              openPanel(btn);
+            }
+          });
+        });
+      });
+    </script>
+    <script is:inline>
+      const slider = document.querySelector('.rf-pills');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+          isDown = true;
+          slider.classList.add('active');
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+          if(!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 1; // scroll speed
+          slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+  </section>
+</Layout>

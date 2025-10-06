@@ -1,0 +1,794 @@
+---
+import "@styles/home.scss";
+import Background_image from "@assets/hero-bac.png";
+import Logo1 from "@assets/logos/logo-1.png";
+import Logo2 from "@assets/logos/logo-2.png";
+import Logo3 from "@assets/logos/logo-3.png";
+import Logo4 from "@assets/logos/logo-4.png";
+import Logo5 from "@assets/logos/logo-5.png";
+import Logo6 from "@assets/logos/logo-6.png";
+import Logo7 from "@assets/logos/logo-7.png";
+import Logo8 from "@assets/logos/logo-8.png";
+import Logo9 from "@assets/logos/logo-9.png";
+import faces from "@assets/faces.png";
+import ClientOne from "@assets/client-1.png";
+import ClientTwo from "@assets/client-2.png";
+import ClientThree from "@assets/client-3.png";
+import Map from "@assets/Map.png";
+import jobsData from "../data/jobs.json";
+import JobComponent from "@components/Jobs";
+import TeamA from '@assets/left-team.png'
+import TeamB from '@assets/right-team.png'
+import ContactDrawer from "@components/ContactDrawer";
+import RegionWidget from "@components/RegionWidget.astro";
+
+const testimonials = [
+  {
+    id: 1,
+    quote:
+      "Our team in Asia has become an indispensable part of our business. The talent quality is exceptional, and they’ve helped us scale operations far more efficiently than we ever could have on our own.",
+    sub: "We needed a flexible solution to handle our growing support volume, and this was the perfect fit.",
+    name: "Emily Chen",
+    title: "CEO, Innovate Dynamics",
+    country: "England",
+    image: ClientOne.src,
+  },
+  {
+    id: 2,
+    quote:
+      "Partnering with YTA has been transformative. Their offshore teams integrated seamlessly with our workflows, and we saw productivity gains within the first month.",
+    sub: "They took care of compliance and HR so we could focus on growth.",
+    name: "Michael Reynolds",
+    title: "COO, Ascent Media Group",
+    country: "England",
+    image: ClientTwo.src,
+  },
+];
+
+const jobs = jobsData.map(job => ({
+  title: job.Job_Title,
+  benefit: job.Save_Up,
+  department: job.Job_Department,
+  tags: [job.Job_Type, job.Job_Work_Mode],
+  responsibilities: job.Job_Responsibilities.split("\n").map(item => item.trim()).filter(Boolean),
+}));
+
+const logos = [Logo1.src, Logo2.src, Logo3.src, Logo4.src, Logo5.src, Logo6.src, Logo7.src, Logo8.src, Logo9.src];
+
+const steps = [
+  {
+    n: 1,
+    title: "Discovery Call",
+    time: "> 10 minutes",
+    body: "Speak with a discovery call where we understand your requirements, challenges, and goals to align the right talent for you.",
+  },
+  {
+    n: 2,
+    title: "Job Description",
+    time: "> 24 hours",
+    body: "We help you draft a job description for your role, giving you the time and value needed to fill.",
+  },
+  {
+    n: 3,
+    title: "Recruitment",
+    time: "> 6 weeks",
+    body: "Once the job description is approved, we begin the recruitment process, managing shortlisting, interviews, and ensuring the right talent is working with you directly.",
+  },
+];
+
+const { price = "£945" } = Astro.props;
+
+const badges = ["Hire < 6 weeks", "No employment risk", "Transparent"];
+
+const stats = [
+  { value: 150,  suffix: "+",  label: "Offshore workforce" },
+  { value: 150, suffix: "+",   label: "Global brands" },
+  { value: 8,  suffix: "M",   label: "Savings delivered", prefix: "£"},
+  { value: 8,  suffix: "+",   label: "Years of experience" },
+];
+const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
+
+// const logosUK = [
+//   "/logos/ibc.png", "/logos/stgeorge.png", "/logos/blanc.png",
+//   "/logos/kanabo.png", "/logos/acus.png", "/logos/gpservice.png",
+//   "/logos/reim.png", "/logos/docotoral.png", "/logos/360med.png",
+//   "/logos/compass.png", "/logos/treatit.png", "/logos/block.png",
+//   "/logos/dia.png", "/logos/glenholme.png", "/logos/charac.png",
+//   "/logos/homeinstead.png", "/logos/soffino.png",
+// ];
+// const logosUS = ["/logos/taxien.png", "/logos/dh.png"];
+// const logosUAE = ["/logos/arth.png", "/logos/ibc.png"];
+// const logosTZ = ["/logos/turaco.png"];
+---
+
+<section
+  id="hero-banner"
+  class="relative overflow-hidden bg-[#5271FF] text-white"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12 sm:mt-16 lg:mt-0">
+      <!-- LEFT: Copy -->
+      <div class="lg:col-span-6 space-y-6 ">
+        <div class="inline-flex items-center gap-2 py-1 text-sm faces-wrapper">
+          <img src={faces.src} alt="" />
+          <span class="font-medium">150+ Skilled Hires, Ready to Power Your Growth</span>
+        </div>
+
+        <h1 class="yta-hero-main">
+          Outsourced Teams.<br />
+          The Smart Way for Your<br />
+          Businesses to Scale.
+        </h1>
+
+        <p class="text-lg text-white/80 max-w-xl text-center lg:text-left">
+          Save up to 70% by offshoring. Hire professionals across Tech,
+          Accounting, Admin, and Customer Support, trusted and hired by global
+          business leaders.
+        </p>
+
+        <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+          <a
+            href="/quote"
+            class="justify-center rounded-xl bg-white px-6 py-3 text-[#152651] font-medium hover:opacity-90 w-auto inline-flex items-center gap-2"
+          >
+            Book a call <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M4.1665 10H15.8332"
+                stroke="#5271FF"
+                stroke-width="1.66667"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M10 4.16663L15.8333 9.99996L10 15.8333"
+                stroke="#5271FF"
+                stroke-width="1.66667"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a
+            href="/talent"
+            class="inline-flex justify-center rounded-xl border border-white px-6 py-3 font-medium hover:bg-white hover:text-[#152651]"
+          >
+            Browse Specialist Talent
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Image grid with floating labels -->
+      <div
+        class="lg:col-span-6 relative home-left hidden lg:block"
+        style=`background-image: url('${Background_image.src}'); background-size: cover; background-position: center; width: 100%; height: 600px; border-radius: 1rem;'`
+      >
+        <div class="absolute top-[65px] left-[150px] label-bloom">
+          Software Development
+        </div>
+        <div class="absolute top-[65px] right-[60px] label-bloom">HR Operations</div>
+        <div class="absolute top-[160px] left-[80px] label-bloom">
+          Virtual assistants
+        </div>
+        <div class="absolute bottom-[65px] right-[155px] label-bloom">Marketing</div>
+        <div class="absolute bottom-1/4 right-1/4 label-bloom">Finance & Accounting</div>
+        <div class="absolute bottom-[150px] left-[0] label-bloom">Bookkeepers</div>
+        <div class="absolute top-[280px] right-[40px] label-bloom">Accountants</div>
+        <div class="absolute bottom-[60px] left-[15%] label-bloom">
+          Designers
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo Slider -->
+  <div class="py-[4%]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="mb-6 text-center lg:text-left">
+        Partner of choice for seamless global recruitment and workforce
+        solutions
+      </p>
+      <div class="swiper swiperLogo">
+        <div class="swiper-wrapper">
+          {
+            logos.map((logo, i) => (
+              <img
+                src={logo}
+                alt={`Partner ${i}`}
+                class="swiper-slide h-10 w-auto opacity-100 hover:opacity-100"
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    import Swiper from "swiper";
+    import { Autoplay } from "swiper/modules";
+    import "swiper/css";
+
+    const swiper = new Swiper(".swiperLogo", {
+      modules: [Autoplay],
+      loop: true,
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      speed: 5000, 
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        0: { slidesPerView: 2 },
+        640: { slidesPerView: 4 },
+        1024: { slidesPerView: 7 },
+      },
+    });
+  </script>
+</section>
+
+<section class="hiw-root relative overflow-hidden">
+  <div class="hiw-bg absolute inset-0 pointer-events-none" aria-hidden="true">
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="hiw-title text-center">
+        How it <span class="hiw-accent">works</span>
+      </h2>
+      <p class="hiw-lead mt-3 text-base sm:text-lg w-auto lg:w-lg mx-auto">
+        Our process starts with a discovery call where we understand your requirements, share our solutions, and finalize the job description. Once confirmed, we begin recruitment to find the right talent for your team.
+      </p>
+    </div>
+
+    <div class="mt-[40px] lg:mt-[100px] grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      {
+        steps.map((s, idx) => (
+          <article class="hiw-card rounded-2xl p-6 relative">
+            <header class="mb-4">
+              <h3 class="font-semibold text-lg text-white">
+                {" "}
+                {s.title}
+              </h3>
+              <p class="hiw-time mt-2 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3337 9.99996C18.3337 14.6 14.6003 18.3333 10.0003 18.3333C5.40033 18.3333 1.66699 14.6 1.66699 9.99996C1.66699 5.39996 5.40033 1.66663 10.0003 1.66663C14.6003 1.66663 18.3337 5.39996 18.3337 9.99996Z" stroke="#172787" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13.0914 12.65L10.5081 11.1083C10.0581 10.8416 9.69141 10.2 9.69141 9.67497V6.2583" stroke="#172787" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> {s.time}</p>
+              <div class="hiw-rule mt-3" />
+            </header>
+            <p class="hiw-body text-sm leading-6 z-1 relative">{s.body}</p>
+            <div class=" hiw-number absolute text-amber-50 bottom-[-23px] right-0">0{idx + 1}</div>
+          </article>
+        ))
+      }
+
+      <svg
+        class="hiw-arrow hiw-arrow-1 hidden md:block"
+        xmlns="http://www.w3.org/2000/svg"
+        width="188"
+        height="59"
+        viewBox="0 0 188 59"
+        fill="none"
+      >
+        <path
+          d="M187.382 24.979C187.437 25.2866 187.437 25.5966 187.382 25.9042C187.309 26.4785 186.914 27.0228 186.259 27.4532C185.391 27.9363 184.252 28.2191 183.055 28.2492C182.428 28.303 181.802 28.3567 181.213 28.3998C180.016 28.5073 178.838 28.6042 177.696 28.6902C175.376 28.8623 173.147 29.0344 171.03 29.1958C166.794 29.4862 163.001 29.7121 159.797 29.8627C153.407 30.1532 149.448 30.1209 149.356 29.7014C149.264 29.2819 153.039 28.5396 159.3 27.6791C162.43 27.2488 166.187 26.7862 170.348 26.3129C172.448 26.0978 174.657 25.8504 176.959 25.6137C178.076 25.4918 179.218 25.3735 180.384 25.2587C179.749 25.0264 179.134 24.7751 178.543 24.5057C175.983 23.5053 172.006 21.6551 165.192 18.9551C155.524 15.089 145.17 11.8431 134.311 9.27382C126.376 7.43032 109.709 5.25072 109.709 5.25072C109.709 5.25072 100.38 4.52646 95.677 4.43317C90.758 4.36701 85.8369 4.48918 80.9453 4.79891C75.9708 5.15139 71.0471 5.71585 66.2135 6.48777C61.3184 7.28 56.5448 8.30907 51.9422 9.56428C42.8135 12.0381 34.5183 15.4482 27.4507 19.6328C24.1037 21.6436 21.0255 23.8013 18.2433 26.087C15.6527 28.26 13.3444 30.5433 11.3378 32.9177C7.82358 36.9704 5.22975 41.2737 3.62209 45.7185C2.59678 48.7586 1.98108 51.841 1.78062 54.9373C1.93093 56.0905 1.83818 57.2502 1.50443 58.3903C0.891489 57.2808 0.562605 56.1244 0.528442 54.9588C0.183266 51.777 0.405412 48.583 1.19135 45.4281C2.40732 40.7451 4.73138 36.1836 8.09685 31.8743C10.0442 29.3378 12.3221 26.8924 14.9103 24.5595C17.7017 22.0857 20.83 19.7475 24.2649 17.5675C31.5375 13.0108 40.1667 9.26388 49.7324 6.5093C54.5486 5.11858 59.5567 3.9671 64.7035 3.06705C69.792 2.18834 74.9877 1.53744 80.2455 1.12003C90.3021 0.338022 100.5 0.414107 110.519 1.34592C119.347 2.1797 127.992 3.57567 136.3 5.50887C147.641 8.1592 158.353 11.6478 168.175 15.8894C172.76 17.8363 177.071 19.9946 181.066 22.3436L181.489 22.6125C180.444 17.5669 180.08 12.481 180.403 7.40211C180.679 2.93796 181.526 0.205693 182.244 0.21645C183.717 0.21645 183.902 11.1456 187.253 24.2906L187.382 24.979Z"
+          fill="#5271FF"></path>
+      </svg>
+
+      <svg
+        class="hiw-arrow hiw-arrow-2 hidden md:block"
+        xmlns="http://www.w3.org/2000/svg"
+        width="188"
+        height="59"
+        viewBox="0 0 188 59"
+        fill="none"
+      >
+        <path
+          d="M187.382 33.6275C187.437 33.32 187.437 33.0099 187.382 32.7024C187.309 32.1281 186.914 31.5838 186.259 31.1534C185.391 30.6703 184.253 30.3875 183.055 30.3574C182.429 30.3036 181.803 30.2498 181.213 30.2068C180.016 30.0992 178.838 30.0024 177.696 29.9164C175.376 29.7442 173.148 29.5721 171.03 29.4108C166.795 29.1203 163.001 28.8944 159.797 28.7438C153.407 28.4534 149.448 28.4857 149.356 28.9052C149.264 29.3247 153.039 30.067 159.3 30.9275C162.43 31.3578 166.187 31.8204 170.349 32.2937C172.448 32.5088 174.658 32.7562 176.96 32.9929C178.077 33.1148 179.218 33.2331 180.385 33.3478C179.749 33.5801 179.134 33.8315 178.543 34.1008C175.984 35.1012 172.006 36.9514 165.193 39.6515C155.524 43.5176 145.171 46.7634 134.311 49.3327C126.376 51.1762 109.709 53.3559 109.709 53.3559C109.709 53.3559 100.38 54.0801 95.6772 54.1734C90.7582 54.2396 85.8371 54.1174 80.9455 53.8077C75.971 53.4552 71.0473 52.8907 66.2138 52.1188C61.3187 51.3266 56.545 50.2975 51.9424 49.0423C42.8137 46.5685 34.5185 43.1583 27.4509 38.9738C24.1039 36.963 21.0258 34.8053 18.2436 32.5196C15.6529 30.3466 13.3446 28.0633 11.3381 25.6889C7.82382 21.6362 5.23 17.3329 3.62233 12.888C2.59703 9.84797 1.98132 6.7656 1.78087 3.66929C1.93117 2.51603 1.83842 1.35636 1.50467 0.216309C0.891739 1.3258 0.562851 2.48213 0.528687 3.64779C0.183517 6.82953 0.405655 10.0236 1.19159 13.1785C2.40756 17.8615 4.73163 22.423 8.09709 26.7323C10.0445 29.2688 12.3223 31.7142 14.9105 34.047C17.7019 36.5208 20.8303 38.8591 24.2652 41.0391C31.5377 45.5958 40.167 49.3427 49.7326 52.0973C54.5489 53.488 59.5569 54.6395 64.7038 55.5395C69.7922 56.4182 74.9879 57.0691 80.2457 57.4865C90.3024 58.2685 100.5 58.1925 110.519 57.2606C119.347 56.4269 127.992 55.0309 136.3 53.0977C147.641 50.4474 158.353 46.9587 168.176 42.7172C172.761 40.7702 177.071 38.6119 181.066 36.263L181.49 35.994C180.444 41.0396 180.081 46.1255 180.403 51.2045C180.679 55.6686 181.526 58.4009 182.245 58.3901C183.718 58.3901 183.902 47.461 187.253 34.316L187.382 33.6275Z"
+          fill="#5271FF"></path>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="jr-root">
+  <div class="text-center max-w-7xl mx-auto px-4">
+      <h2 class="hiw-title">
+        Creating Human Connection to Drive Meaningful <span class="hiw-accent">Impact</span>
+      </h2>
+      <p class="hiw-lead-left mt-3">
+        Our diverse, global talent helps clients transform every aspect of their business and achieve exceptional results. Submit a custom job description and we'll help you find the perfect candidate. please <a href="#/contact">contact us.</a></p>
+    </div>
+    <JobComponent jobs={jobs.slice(0, 6)} client:load />
+</section>
+
+<section class="pricing-root relative overflow-hidden">
+  <!-- Background slot (replace with your SVG/grid) -->
+  <div
+    class="pricing-bg absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Heading -->
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="pricing-title">
+        <span class="accent">Pricing</span> for full-time staff
+      </h2>
+      <p class="pricing-sub mt-3 text-base sm:text-lg">
+        Want hiring flexibility? Choose On-Demand. Hiring long-term? Save more
+        with Partner.
+      </p>
+
+      <!-- Badges -->
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        {badges.map((b) => <span class="pricing-badge">{b}</span>)}
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="mt-10 flex justify-center">
+      <article class="pricing-card left-pricing-card rounded-3xl p-6 sm:p-8 w-full max-w-2xl">
+        <header>
+          <h3 class="plan-title">On-Demand Plan</h3>
+          <p class="plan-sub">
+            Long-term hiring and building dedicated offshore teams.
+          </p>
+
+          <div class="price-row">
+            <span class="price">{price}</span>
+            <span class="per">/month</span>
+          </div>
+        </header>
+
+        <div class="rule mb-5"></div>
+
+        <div>
+          <h4 class="incl-title">What’s included?</h4>
+          <ul class="mt-3 space-y-6">
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Dedicated offshore employee (40 hours/week)
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Cost saving compared to UK salaries
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Managed offshore recruitment and HR support 
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Team dashboard for attendance & productivity tracking 
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Fully GDPR compliant
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <a
+          href="/get-started"
+          class="cta-btn mt-6 inline-flex w-full items-center justify-center"
+        >
+          Get started
+        </a>
+      </article>
+    </div>
+      <div class="mt-0 lg:mt-10 flex justify-center">
+      <article class="pricing-card right-pricing-card rounded-3xl p-6 sm:p-8 w-full max-w-2xl">
+        <header>
+          <h3 class="plan-title">On-Demand Plan</h3>
+          <p class="plan-sub">
+            Long-term hiring and building dedicated offshore teams.
+          </p>
+
+          <div class="price-row">
+            <span class="price">{price}</span>
+            <span class="per">/month</span>
+          </div>
+        </header>
+
+        <div class="rule mb-5"></div>
+
+        <div>
+          <h4 class="incl-title">What’s included?</h4>
+          <ul class="mt-3 space-y-6">
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Dedicated offshore employee 40 hours/week
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Cost saving compared to UK salaries
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Managed offshore recruitment and HR support 
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Team dashboard for attendance & productivity tracking
+              </p>
+            </li>
+            <li class="incl-item">
+              <span class="tick" aria-hidden="true">✓</span>
+              <p>
+                Fully GDPR compliant
+              </p>
+          </ul>
+        </div>
+
+        <a
+          href="/get-started"
+          class="cta-btn mt-6 inline-flex w-full items-center justify-center"
+        >
+          Get started
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-root">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Heading -->
+    <div class="text-center mb-10">
+      <h2 class="ts-title">
+        <span class="accent">Success Stories</span> from Global Companies Like Yours
+      </h2>
+      <p class="ts-sub mt-3">
+        Don't just take our word for it, see what our clients have to say about
+        the results we deliver.
+      </p>
+    </div>
+    <div class="swiper flex items-center">
+      <div class="">
+        <div class="">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-6 w-lg order-2 lg:order-1">
+              <div class="swiper mySwiperQuote">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <blockquote class="ts-quote">
+                      “Our team in Asia has become an indispensable part of our
+                      business. The talent quality is exceptional, and they've
+                      helped us scale operations far more efficiently than we
+                      ever could have on our own.”
+                    </blockquote>
+                    <p class="ts-subtext mt-4">
+                      They took care of compliance and HR so we could focus on
+                      growth.
+                    </p>
+                    <p class="ts-author mt-4 font-semibold">
+                      Emily Chen, CEO, Innovate Dynamics
+                    </p>
+                  </div>
+                  <div class="swiper-slide">
+                    <blockquote class="ts-quote">
+                      “Partnering with YTA has been transformative. Their
+                      offshore teams integrated seamlessly with our workflows,
+                      and we saw productivity gains within the first month.”
+                    </blockquote>
+                    <p class="ts-subtext mt-4">
+                      We needed a flexible solution to handle our growing
+                      support volume, and this was the perfect fit.
+                    </p>
+                    <p class="ts-author mt-4 font-semibold">
+                      Emily Chen, CEO, Innovate Dynamics
+                    </p>
+                  </div>
+                  <div class="swiper-slide">
+                    <blockquote class="ts-quote">
+                      “This is Text Three. Their offshore teams integrated
+                      seamlessly with our workflows, and we saw productivity
+                      gains within the first month.”
+                    </blockquote>
+                    <p class="ts-subtext mt-4">
+                      We needed a flexible solution to handle our growing
+                      support volume, and this was the perfect fit.
+                    </p>
+                    <p class="ts-author mt-4 font-semibold">
+                      Emily Chen, CEO, Innovate Dynamics
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-arrwo flex justify-start mt-4 lg:mt-6 cursor-pointer">
+                <div class="button-prev rounded-full p-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.97501 5.44165L2.91667 10.5L7.97501 15.5583"
+                      stroke="#292D32"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                    <path
+                      d="M17.0833 10.5H3.05833"
+                      stroke="#292D32"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <div class="button-next rounded-full p-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                  >
+                    <path
+                      d="M12.025 5.44165L17.0833 10.5L12.025 15.5583"
+                      stroke="#292D32"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                    <path
+                      d="M2.91667 10.5H16.9417"
+                      stroke="#292D32"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-6 flex gap-6 order-1 lg:order-2">
+              <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="ts-card rounded-xl overflow-hidden relative">
+                      <div class="ts-country flex items-center gap-2"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z" stroke="white" stroke-width="1.5"/>
+  <path d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z" stroke="white" stroke-width="1.5"/>
+</svg> England</div>
+                      <img
+                        src={ClientOne.src}
+                        alt="Emily Chen"
+                        class="w-full h-auto object-cover sponsor-img"
+                      />
+                      <div class="p-3 text-[#fff] ceo-details">
+                        <p class="font-medium">Emily Chen</p>
+                        <p class="text-sm opacity-80">CEO, Innovate Dynamics</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="ts-card rounded-xl overflow-hidden relative">
+                      <div class="ts-country flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z" stroke="white" stroke-width="1.5"/>
+  <path d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z" stroke="white" stroke-width="1.5"/>
+</svg> England</div>
+                      <img
+                        src={ClientTwo.src}
+                        alt="Emily Chen"
+                        class="w-full h-auto object-cover sponsor-img"
+                      />
+                      <div class="ceo-details text-[#fff]">
+                        <p class="font-medium">Michael Reynolds</p>
+                        <p class="text-sm opacity-80">
+                          COO, Ascent Media Group
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="ts-card rounded-xl overflow-hidden relative">
+                      <div class="ts-country flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z" stroke="white" stroke-width="1.5"/>
+  <path d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z" stroke="white" stroke-width="1.5"/>
+</svg> England</div>
+                      <img
+                        src={ClientThree.src}
+                        alt="Emily Chen"
+                        class="w-full h-auto object-cover sponsor-img"
+                      />
+                      <div class="ceo-details text-[#fff]">
+                        <p class="font-medium">Michael Reynolds</p>
+                        <p class="text-sm opacity-80">
+                          COO, Ascent Media Group
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Navigation } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+
+  const swiperNew = new Swiper(".mySwiper", {
+    modules: [Autoplay, Navigation],
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 2,
+    allowTouchMove: false,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    navigation: { nextEl: ".button-next", prevEl: ".button-prev" },
+    breakpoints: {
+      0: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 50,
+      },
+    },
+  });
+
+  const swiperQuote = new Swiper(".mySwiperQuote", {
+    modules: [Autoplay, Navigation],
+    loop: true,
+    spaceBetween: 16,
+    allowTouchMove: false,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    navigation: { nextEl: ".button-next", prevEl: ".button-prev" },
+  });
+</script>
+
+<section class="yta-stats bg-[#DCE3FF]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-y-8 justify-items-center">
+      {stats.map((s) => (
+        <li class="text-center stat-wrapper">
+          <div
+            class="stat-number"
+            data-target={s.value}
+            data-suffix={s.suffix ?? ""}
+            data-prefix={s.prefix ?? ""}
+            aria-label={`${s.prefix ?? ""}${s.value}${s.suffix ?? ""}`}
+          >
+            {s.prefix ?? ""}{s.value}{s.suffix ?? ""}
+          </div>
+          <div class="stat-label mt-2">{s.label}</div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+</section>
+
+
+<section class="portfolio-root pb-[0px] lg:pb-[120px] ">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 text-center">
+    <h2 class="pf-title">
+      Our customer <span class="accent">portfolio</span>
+    </h2>
+    <p class="pf-sub mt-3 max-w-3xl mx-auto text-base sm:text-lg">
+      Our commitment to excellence and our deep understanding of a wide
+      range of sectors have made us a trusted partner for organizations
+      seeking to innovate and expand their global presence.
+    </p>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 hidden lg:block">
+    <img src={Map.src} alt="Map" class="w-full rounded-lg" />
+  </div>
+
+  <!-- Map + logo clusters -->
+  <!-- <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="relative">
+   
+      <img src="/images/world-map.png" alt="Customer map" class="w-full rounded-lg" />
+
+    
+      <div class="pf-cluster absolute left-[8%] top-[40%]">
+        {logosUS.map((logo) => (
+          <img src={logo} alt="Client" class="h-8" />
+        ))}
+      </div>
+
+
+      <div class="pf-cluster absolute left-[35%] top-[20%]">
+        {logosUK.map((logo) => (
+          <img src={logo} alt="Client" class="h-8" />
+        ))}
+      </div>
+
+
+      <div class="pf-cluster absolute right-[30%] top-[35%]">
+        {logosUAE.map((logo) => (
+          <img src={logo} alt="Client" class="h-8" />
+        ))}
+      </div>
+
+
+      <div class="pf-cluster absolute right-[32%] bottom-[18%]">
+        {logosTZ.map((logo) => (
+          <img src={logo} alt="Client" class="h-8" />
+        ))}
+      </div>
+    </div>
+  </div> -->
+</section>
+
+<RegionWidget />
+
+<section class="yta-cta relative overflow-hidden my-8 py-6">
+  <div class="yta-cta-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <img src={TeamA.src} alt="Team A" class="absolute hidden sm:block lg:block bottom-0 left-25" />
+    <img src={TeamB.src} alt="Team B" class="absolute hidden sm:block lg:block bottom-0 right-25" />
+  <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 text-center">
+    <h2 class="cta-title">
+      Hire with Your Team in Asia
+    </h2>
+
+    <p class="cta-sub mt-3 max-w-2xl mx-auto text-base sm:text-lg">
+      At Your Team in Asia, we don’t just fill roles, we help businesses build
+      sustainable offshore teams that deliver lasting results. Take the first step
+      towards smarter, leaner growth today!
+    </p>
+      <ContactDrawer client:load />
+    <div class="py-16 h-[360px] block lg:hidden xl:hidden">
+       <img src={TeamA.src} alt="Team A" class="absolute bottom-[-23px] left-0 w-full h-auto" />
+    </div>
+    <!-- <a href={ctaHref} class="cta-btn mt-6 inline-flex items-center justify-center">
+      {ctaText}<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+  <path d="M4.16669 10.5H15.8334"  stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 4.66663L15.8333 10.5L10 16.3333" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </a> -->
+  </div>
+
+</section>

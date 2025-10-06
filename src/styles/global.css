@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+body{
+    font-family: "Inter Tight", sans-serif;
+}
+
+.contact-cta{
+    display: flex;
+    padding: 13px 24px 14px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-not-found{
+    border-radius: 8px;
+}
+#yta-mobile-toggle{
+    border-radius: 8px;
+    background: rgba(207, 210, 219, 0.50);
+}
+.menu-container a{
+    font-size: 16px;
+
+}
+
+.swiperLogoMap.swiper-backface-hidden .swiper-slide {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+}

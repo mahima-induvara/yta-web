@@ -1,0 +1,133 @@
+@use "@styles/mixins/mixins" as *;
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 0.95rem;
+  color: #111827;
+  background: #fff;
+}
+.form-input:focus {
+  outline: 2px solid #152651;
+  outline-offset: 1px;
+}
+.form-input::placeholder {
+  color: #9ca3af;
+}
+form label {
+  color: #111827;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
+  span {
+    color: #fff;
+  }
+}
+
+input[type="checkbox"] {
+  border-radius: 4px;
+  border: 1px solid #464646;
+  background: #fff;
+}
+
+.contact-root {
+  background: url("../assets/ttw.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  // min-height: calc(100vh - 81px);
+  .yta-contact-title {
+    color: #fff;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 73px; /* 130.357% */
+    letter-spacing: -0.56px;
+    @include mobile {
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 47px; /* 130.556% */
+      letter-spacing: -0.36px;
+    }
+  }
+  .contact-desc {
+    color: #fff;
+    font-family: "Inter Tight";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .bottom-title {
+    color: #fff;
+    font-family: "Inter Tight";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  .bottom-desc {
+    color: #cbd4ff;
+    font-family: "Inter Tight";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    @include mobile {
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+}
+
+.contact-area {
+  border-radius: 24px;
+  background: url("../assets/blue-dashed-light.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .bottom-box {
+    border-left: 2px solid rgba(203, 212, 255, 0.2);
+    padding-left: 16px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+  form {
+    svg {
+      margin-top: 3px;
+    }
+  }
+}
+
+.submit-btn {
+  cursor: pointer;
+}
+$brand: #5271ff;
+.ind-title {
+  color: #111827;
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px;
+  letter-spacing: -0.32px;
+}
+.ind-title .accent {
+  color: $brand;
+}
+.ind-sub {
+  color: #464646;
+  font-family: "Inter Tight";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
+}

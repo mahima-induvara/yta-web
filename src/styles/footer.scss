@@ -1,0 +1,94 @@
+@use '@styles/mixins/mixins' as *;
+.yta-footer {
+  background-color: #fbfbfb;
+  color: #111827; /* same as text-[#111827] */
+}
+.text-lead{
+  color: #111827;
+  text-align: right;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 133.333% */
+  @include mobile{
+    text-align: left;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+.link-set{
+  display: flex;
+  gap: 16px;
+}
+.footer-titles{
+  color: #111827;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 133.333% */
+  @include mobile{
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.20);
+  }
+}
+.mobile-title{
+  @include mobile{
+    margin-top: 24px;
+  }
+}
+.address-area{
+  display: flex;
+  gap: 16px;
+}
+
+.yta-footer .yta-link {
+  color: #464646;
+  font-size: 18px;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 160ms ease, text-decoration-color 160ms ease;
+}
+.yta-footer .footer-copyrights{
+  color: #5271FF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+.yta-footer .yta-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.text-copyright{
+  color: #464646;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px; /* 131.25% */
+}
+
+/* subtle dividers that harmonize with the text color */
+.yta-footer .yta-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(17, 24, 39, 0.15);
+  margin: 24px 0;
+}
+
+/* square logo tile in brand blue (#5271FF); white arrow inside */
+.yta-footer .yta-logo {
+  background: #5271ff;
+  color: #ffffff; /* SVG uses currentColor for stroke */
+}
+
+/* icons (LinkedIn / phone / email) */
+.yta-footer .yta-icon {
+  color: #111827;
+  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.yta-footer .yta-icon:hover { opacity: 1; }

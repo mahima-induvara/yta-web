@@ -1,0 +1,163 @@
+---
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/hire", label: "Hire" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About us" },
+];
+
+const pathname = Astro.url?.pathname ?? "/";
+const isActive = (href: string) =>
+  href === "/"
+    ? pathname === "/"
+    : pathname.startsWith(href);
+
+import Logo from '@assets/logo-a.svg'
+const { ctaText = "Hire with YTA", ctaHref = "/contact" } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-slate-100 shadow-header">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Left: Logo -->
+      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="YTA — Your Team in Asia">
+        <!-- Logo block (replace with your SVG or image) -->
+            {Logo && <img src={Logo.src} alt="YTA Logo" class=" w-auto text-white" />}
+      </a>
+
+      <!-- Center: Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class={`text-md transition-colors hover:text-[#5271FF] ${
+              isActive(l.href) ? "font-medium text-[#5271FF]" : "text-slate-600"
+            }`}
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right: CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href={ctaHref}
+          class="contact-cta hidden sm:inline-flex rounded-xl bg-[#152651] text-md font-medium text-white hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900"
+        >
+          {ctaText}
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="yta-mobile-toggle"
+          class="inline-flex md:hidden items-center justify-center p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          aria-label="Open menu"
+          aria-controls="yta-mobile-drawer"
+          aria-expanded="false"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2.5 5.83331H17.5" stroke="#0F204B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M2.5 10H17.5" stroke="#0F204B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M2.5 14.1667H17.5" stroke="#0F204B" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div
+    id="yta-mobile-drawer"
+    class="md:hidden fixed inset-0 z-40 hidden"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- backdrop -->
+    <div class="absolute inset-0 bg-black/30" data-yta-close></div>
+
+    <!-- panel -->
+    <div class="menu-container absolute right-0 top-0 h-screen w-80 max-w-[85vw] bg-white shadow-xl p-6 flex flex-col">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          {Logo && <img src={Logo.src} alt="YTA Logo" class="w-6 text-white" />}
+          <!-- <div class="h-9 w-9 rounded-md bg-indigo-500 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 6l-6 6 6 6M21 12H9" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div> -->
+          <span class="font-semibold tracking-tight text-slate-900">YTA</span>
+        </div>
+
+        <button
+          class="rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          aria-label="Close menu"
+          data-yta-close
+        >
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mt-6 flex flex-col gap-2">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class={`rounded-lg px-3 py-2 transition-colors hover:bg-slate-50 ${
+              isActive(l.href)
+                ? "bg-slate-50 text-indigo-600"
+                : "text-slate-700"
+            }`}
+            data-yta-close
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href={ctaHref}
+        class="mt-6 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:opacity-95"
+        data-yta-close
+      >
+        {ctaText}
+      </a>
+
+      <div class="mt-auto pt-6 text-xs text-slate-400">
+        © {new Date().getFullYear()} YTA — Your Team in Asia
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("yta-mobile-toggle");
+  const drawer = document.getElementById("yta-mobile-drawer");
+
+  function openDrawer() {
+    drawer?.classList.remove("hidden");
+    toggle?.setAttribute("aria-expanded", "true");
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    drawer?.classList.add("hidden");
+    toggle?.setAttribute("aria-expanded", "false");
+    document.documentElement.style.overflow = "";
+  }
+
+  toggle?.addEventListener("click", openDrawer);
+  drawer?.addEventListener("click", (e) => {
+    const t = e.target;
+    if (t instanceof HTMLElement && t.hasAttribute("data-yta-close")) {
+      closeDrawer();
+    }
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
+</script>

@@ -1,0 +1,789 @@
+---
+import "@styles/services.scss";
+import Logo1 from "@assets/logos/logo-1.png";
+import Logo2 from "@assets/logos/logo-2.png";
+import Logo3 from "@assets/logos/logo-3.png";
+import Logo4 from "@assets/logos/logo-4.png";
+import Logo5 from "@assets/logos/logo-5.png";
+import IphoneFrame from "@assets/iPhone13.png";
+const logos = [Logo1.src, Logo2.src, Logo3.src, Logo4.src, Logo5.src];
+import Layout from "@layouts/Layout.astro";
+import faces from "@assets/faces.png";
+import videoSrc from "@assets/ytav.mp4";
+import ClientOne from "@assets/client-1.png";
+import ClientTwo from "@assets/client-2.png";
+import ClientThree from "@assets/client-3.png";
+
+const industriesWithDetails = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M7.49984 18.3334H12.4998C16.6665 18.3334 18.3332 16.6667 18.3332 12.5V7.50002C18.3332 3.33335 16.6665 1.66669 12.4998 1.66669H7.49984C3.33317 1.66669 1.6665 3.33335 1.6665 7.50002V12.5C1.6665 16.6667 3.33317 18.3334 7.49984 18.3334Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.82471 6.40002H12.358V9.94169" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.3583 6.40002L7.6416 11.1167" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 13.7583C8.24167 14.8416 11.7583 14.8416 15 13.7583" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Onboarding",
+    body: "Orientation, program enrolment, compliance, IT provisioning.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M7.49984 18.3334H12.4998C16.6665 18.3334 18.3332 16.6667 18.3332 12.5V7.50002C18.3332 3.33335 16.6665 1.66669 12.4998 1.66669H7.49984C3.33317 1.66669 1.6665 3.33335 1.6665 7.50002V12.5C1.6665 16.6667 3.33317 18.3334 7.49984 18.3334Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.82471 11.1167H12.358V7.58337" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.3583 11.1167L7.6416 6.40002" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 13.7583C8.24167 14.8416 11.7583 14.8416 15 13.7583" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Offboarding",
+    body: "Exit management, knowledge transfer, replacement hiring.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M18.3335 5.00002V7.01669C18.3335 8.33335 17.5001 9.16669 16.1835 9.16669H13.3335V3.34169C13.3335 2.41669 14.0918 1.66669 15.0168 1.66669C15.9252 1.67502 16.7585 2.04169 17.3585 2.64169C17.9585 3.25002 18.3335 4.08335 18.3335 5.00002Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 5.83335V17.5C1.6665 18.1917 2.44982 18.5834 2.99982 18.1667L4.42484 17.1C4.75817 16.85 5.22484 16.8834 5.52484 17.1834L6.90815 18.575C7.23315 18.9 7.76652 18.9 8.09152 18.575L9.49152 17.175C9.78318 16.8834 10.2498 16.85 10.5748 17.1L11.9999 18.1667C12.5499 18.575 13.3332 18.1834 13.3332 17.5V3.33335C13.3332 2.41669 14.0832 1.66669 14.9998 1.66669H5.83317H4.99984C2.49984 1.66669 1.6665 3.15835 1.6665 5.00002V5.83335Z" stroke="#90FCFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 7.5H10" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.625 10.8333H9.375" stroke="#90FCFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Payroll, PAYE and Pensions",
+    body: "Salary calculations, deductions, pension plans.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M8.33317 14.1249H5.17484C2.3665 14.1249 1.6665 13.4249 1.6665 10.6166V5.61661C1.6665 2.80828 2.3665 2.10828 5.17484 2.10828H13.9498C16.7582 2.10828 17.4582 2.80828 17.4582 5.61661" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.3335 17.8917V14.125" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.6665 10.7916H8.33317" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.6167 17.8917H8.33337" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.3336 10.6666V15.425C18.3336 17.4 17.8419 17.8916 15.8669 17.8916H12.9086C10.9336 17.8916 10.4419 17.4 10.4419 15.425V10.6666C10.4419 8.69162 10.9336 8.19995 12.9086 8.19995H15.8669C17.8419 8.19995 18.3336 8.69162 18.3336 10.6666Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14.3706 15.2083H14.3781" stroke="#8DFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Equipment Management",
+    body: "Laptops, headsets, secure devices.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M16.5498 6.7417C16.5498 7.0917 16.5248 7.43337 16.4832 7.75837C16.0998 7.5917 15.6832 7.50004 15.2415 7.50004C14.2248 7.50004 13.3248 7.99169 12.7665 8.74169C12.1998 7.99169 11.2998 7.50004 10.2832 7.50004C8.57483 7.50004 7.19151 8.89169 7.19151 10.6167C7.19151 12.85 8.37484 14.5584 9.69151 15.7167C9.64984 15.7417 9.60818 15.75 9.56651 15.7667C9.31651 15.8584 8.89984 15.8584 8.64984 15.7667C6.49151 15.025 1.6665 11.9584 1.6665 6.7417C1.6665 4.4417 3.5165 2.58337 5.79983 2.58337C7.15816 2.58337 8.35816 3.23337 9.10816 4.2417C9.8665 3.23337 11.0665 2.58337 12.4165 2.58337C14.6998 2.58337 16.5498 4.4417 16.5498 6.7417Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.3331 10.6167C18.3331 14.5167 14.7247 16.8167 13.1081 17.3667C12.9164 17.4333 12.6081 17.4333 12.4164 17.3667C11.7247 17.1333 10.6664 16.575 9.69141 15.7167C8.37474 14.5583 7.19141 12.85 7.19141 10.6167C7.19141 8.89166 8.57473 7.5 10.2831 7.5C11.2997 7.5 12.1997 7.99166 12.7664 8.74166C13.3247 7.99166 14.2247 7.5 15.2414 7.5C15.6831 7.5 16.0997 7.59166 16.4831 7.75833C17.5747 8.24166 18.3331 9.33333 18.3331 10.6167Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Health Coverage",
+    body: "Sri Lankan top-tier insurance partnerships.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M3.34984 4.97496C2.2915 6.37496 1.6665 8.11663 1.6665 9.99996C1.6665 14.6 5.39984 18.3333 9.99984 18.3333C14.5998 18.3333 18.3332 14.6 18.3332 9.99996C18.3332 5.39996 14.5998 1.66663 9.99984 1.66663" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.1665 9.99996C4.1665 13.225 6.77484 15.8333 9.99984 15.8333C13.2248 15.8333 15.8332 13.225 15.8332 9.99996C15.8332 6.77496 13.2248 4.16663 9.99984 4.16663" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 13.3333C11.8417 13.3333 13.3333 11.8416 13.3333 9.99996C13.3333 8.15829 11.8417 6.66663 10 6.66663" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Performance Management",
+    body: "KPI tracking, reviews, development plans.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M17.79 10.47V17.79C17.79 20.12 15.9 22 13.58 22H6.21C3.89 22 2 20.11 2 17.79V10.47C2 8.14001 3.89 6.26001 6.21 6.26001H13.58C15.9 6.26001 17.79 8.15001 17.79 10.47Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.5 4V2.25" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.5 4V2.25" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13.5 4V2.25" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 13.16C22 15.48 20.11 17.37 17.79 17.37V8.94995C20.11 8.94995 22 10.83 22 13.16Z" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 12H17.51" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Events Management",
+    body: "Team events, celebrations, training.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M4.55004 15.4084V12.975C4.55004 12.1667 5.18337 11.4417 6.08337 11.4417C6.89171 11.4417 7.61671 12.075 7.61671 12.975V15.3167C7.61671 16.9417 6.26671 18.2917 4.64171 18.2917C3.01671 18.2917 1.66671 16.9334 1.66671 15.3167V10.1834C1.57504 5.50004 5.27504 1.70837 9.95837 1.70837C14.6417 1.70837 18.3334 5.50004 18.3334 10.0917V15.225C18.3334 16.85 16.9834 18.2 15.3584 18.2C13.7334 18.2 12.3834 16.85 12.3834 15.225V12.8834C12.3834 12.075 13.0167 11.35 13.9167 11.35C14.725 11.35 15.45 11.9834 15.45 12.8834V15.4084" stroke="#8DFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Local HR Helpdesk",
+    body: "HR support for policies, compliance, workforce management.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M1.6665 18.3334H18.3332" stroke="#8DFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2.4585 18.3334L2.50017 8.30836C2.50017 7.80003 2.74183 7.31674 3.14183 7.00008L8.97516 2.4584C9.57516 1.99173 10.4168 1.99173 11.0252 2.4584L16.8585 6.99173C17.2668 7.3084 17.5002 7.7917 17.5002 8.30836V18.3334" stroke="#8DFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M12.9168 9.16663H7.0835C6.39183 9.16663 5.8335 9.72496 5.8335 10.4166V18.3333H14.1668V10.4166C14.1668 9.72496 13.6085 9.16663 12.9168 9.16663Z" stroke="#8DFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.3335 13.5416V14.7916" stroke="#8DFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.75 6.25H11.25" stroke="#8DFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+    title: "Modern Office Solutions",
+    body: "Co-working office spaces, internet, 24/7 access.",
+  },
+];
+
+const stats = [
+  { value: 150, suffix: "+", label: "Offshore workforce" },
+  { value: 150, suffix: "+", label: "Global brands" },
+  { value: 8, suffix: "M", label: "Savings delivered", prefix: "£" },
+  { value: 8, suffix: "+", label: "Years of experience" },
+];
+type QA = { q: string; a: string };
+
+const faqs: QA[] = [
+  {
+    q: "Why should I choose Sri Lanka for offshore teams?",
+    a: "Sri Lanka offers highly educated, English-speaking talent aligned with UK business culture and time zones. With competitive salaries and strong compliance to international standards including GDPR, Sri Lanka is a cost-effective, reliable destination for offshore staffing services.",
+  },
+  {
+    q: "What roles can I hire through Your Team in Asia?",
+    a: "We provide offshore staffing solutions across more than 150 roles including virtual assistants, software developers, finance professionals, cybersecurity experts, marketing specialists, customer support agents, HR operations, and legal administrators tailored for UK businesses.",
+  },
+  {
+    q: "Can I customize the offshore team based on my specific business needs?",
+    a: "Yes. We tailor offshore teams to your exact requirements, whether you need specialists in software development, finance, marketing, or customer support. You can scale your team up or down flexibly as your business needs change.",
+  },
+  {
+    q: "What support does Your Team in Asia provide beyond recruitment?",
+    a: "We offer full Employer of Record services including payroll processing, benefits management, local HR support, performance management, office space solutions, IT equipment provisioning, and compliance monitoring, serving as your trusted offshore workforce partner.",
+  },
+  {
+    q: "How do I manage and communicate with my offshore team?",
+    a: "Our teams are trained to work seamlessly with UK clients using tools like Slack, Microsoft Teams, Zoom, and project management platforms. We align working hours to ensure optimal overlap and regular updates for effective collaboration.",
+  },
+];
+---
+
+<Layout
+  title="Services - Your Team in Asia"
+  description="Discover YTA's comprehensive offshore staffing solutions, from virtual assistants to IT, finance, and more. Build your dream team with the world's top talent."
+>
+  <section
+    id="service-banner"
+    class="relative overflow-hidden bg-[#5271FF] text-white"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mx-auto text-center"
+      >
+        <!-- LEFT: Copy -->
+        <div class="lg:col-span-full space-y-6">
+          <div
+            class="inline-flex items-center gap-2 py-1 text-sm faces-wrapper"
+          >
+            <img src={faces.src} alt="" />
+            <span class="font-medium">800+ Full-Time Hires, Ready to Scale With You</span>
+          </div>
+
+          <h1 class="service-main-text">
+            Our Services: Built for Impact, Delivered<br />
+            by the World's Top Talent
+          </h1>
+
+          <p class="text-lg text-white/80 max-w-xl mx-auto">
+            Explore our full range of offshore staffing solutions, from virtual
+            assistants to IT, finance, and more.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="/contact"
+              class="rounded-xl bg-white px-6 flex-grow-1 lg:flex-grow-0 py-3 text-[#152651] font-medium hover:opacity-90 w-auto inline-flex items-center justify-center gap-2"
+            >
+              Get a free quote <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M4.1665 10H15.8332"
+                  stroke="#5271FF"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M10 4.16663L15.8333 9.99996L10 15.8333"
+                  stroke="#5271FF"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a
+              href="/hire"
+              class="flex-grow-1 lg:flex-grow-0 rounded-xl border border-white px-6 py-3 font-medium hover:bg-white hover:text-[#152651]"
+            >
+              Browse Specialist Talent
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Image grid with floating labels -->
+        <!-- <div
+        class="lg:col-span-6 relative"
+        style=`background-image: url('${ServiceBanner.src}'); background-size: cover; background-position: center; width: 100%; height: 100%; border-radius: 1rem;'`
+      >
+  
+      </div> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="industries-root relative overflow-hidden">
+    <!-- Background placeholder -->
+    <div
+      class="industries-bg absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Heading -->
+      <div class="text-center max-w-4xl mx-auto">
+        <h2 class="ind-title text-3xl sm:text-4xl font-semibold">
+          Hiring talent across every <span class="accent">industry</span>
+        </h2>
+        <p class="ind-sub mt-3 text-base sm:text-lg">
+          Since 2017, we’ve partnered with 25 clients across the UK, USA, and
+          UAE, building a team of over 150 professionals. We specialize in
+          providing offshore staffing, EOR, and recruitment solutions tailored
+          to the unique needs of businesses in:
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          industriesWithDetails.map((i) => (
+            <article class="ind-card rounded-2xl p-6">
+              <div class="flex items-center gap-4">
+                <div class="ind-icon" set:html={i.icon} />
+                <h3 class="ind-heading">{i.title}</h3>
+              </div>
+
+              <hr class="my-4 border-t border-dashed border-[#4353FF66]" />
+              <p class="ind-body mt-0">{i.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="yta-service">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-left">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-[#111827]">
+        Our service covers everything from the big picture to the <span
+          class="text-[#5271FF]">smallest details</span
+        >
+      </h2>
+      <p class="mt-3 text-[#111827]/80">
+        With over 8 years of experience recruiting in Sri Lanka, we've built
+        unmatched expertise in the local talent market. Our deep understanding
+        of Sri Lankan work culture and professional standards ensures we match
+        you with highly skilled candidates who align perfectly with your
+        requirements.
+      </p>
+    </div>
+    <div
+      class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8
+            grid grid-cols-1 md:grid-cols-3 gap-0 lg:gap-10
+            justify-items-center md:justify-items-start md:items-center"
+    >
+      <!-- Phone with video inside -->
+      <div
+        class="phone-frame relative w-[280px] sm:w-[320px] md:w-[360px]"
+      >
+        <!-- phone PNG -->
+        <img
+          src={IphoneFrame.src}
+          alt="Phone frame"
+          class="block w-full relative z-10"
+        />
+
+        <!-- video overlay -->
+        <div class="absolute inset-[2%] rounded-[2rem] overflow-hidden z-0">
+          <video
+            src={videoSrc}
+            autoplay
+            muted
+            loop
+            playsinline
+            class="w-full h-full object-cover"></video>
+        </div>
+      </div>
+
+      <!-- Right side content -->
+      <div class="space-y-8 col-span-2 mt-[40px] md:mt-0">
+        <div class="grid sm:grid-cols-2 gap-8 details-cards-wrapper">
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">Tech & IT</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              From full-stack developers to cybersecurity experts, we help you
+              build high-performing technical teams with expertise in modern
+              technologies and frameworks.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Software Development</span>
+              <span class="tag">DevOps & Cloud</span>
+              <span class="tag">Cybersecurity</span>
+            </div>
+          </div>
+
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">Finance</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Build your offshore finance team with qualified professionals who
+              understand UK accounting standards and compliance requirements.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Accounting & Bookkeeping</span>
+              <span class="tag">Financial Analysis</span>
+            </div>
+          </div>
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">HR</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Boost your HR capabilities by partnering with experienced
+              professionals in recruitment, employee relations, performance
+              management, and compliance.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">HR Operations</span>
+              <span class="tag">Learning & Development</span>
+            </div>
+          </div>
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">Customer Support</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Create a dedicated customer support team with professionals who
+              combine technical knowledge with excellent communication skills.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Technical Support</span>
+              <span class="tag">Customer Service</span>
+            </div>
+          </div>
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">Virtual Assistants</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Get dedicated support with skilled virtual assistants who can
+              handle administrative tasks, scheduling, and personal
+              coordination.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Executive Assistance</span>
+              <span class="tag">Calendar Management</span>
+            </div>
+          </div>
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">Marketing</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Create a dynamic marketing team composed of experts in digital
+              marketing, engaging content creation, and effective campaign
+              management to drive your brand's success.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Digital Marketing</span>
+              <span class="tag">Content Creation</span>
+              <span class="tag">Copywriting</span>
+            </div>
+          </div>
+          <div class="details-cards yta-border-blank">
+            <h3 class="font-semibold text-[#111827]">Legal Admin</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Get dedicated support with skilled legal assistants who can handle
+              document preparation, research, and compliance tasks.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">Document Preparation</span>
+              <span class="tag">Legal Research</span>
+              <span class="tag">Compliance Support</span>
+            </div>
+          </div>
+          <div class="details-cards">
+            <h3 class="font-semibold text-[#111827]">AI Solutions</h3>
+            <p class="text-sm text-[#111827]/75 mt-1">
+              Leverage AI technologies to enhance your business processes,
+              improve decision-making, and drive innovation.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="tag">AI Strategy</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Data Analysis</span>
+            </div>
+          </div>
+
+          <!-- Add HR, Customer Support, Virtual Assistants, Marketing blocks here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-root">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Heading -->
+      <div class="text-center mb-10">
+        <h2 class="ts-title">
+          <span class="accent">Success Stories</span> from Global Companies Like
+          Yours
+        </h2>
+        <p class="ts-sub mt-3">
+          Don’t just take our word for it — see what our clients have to say
+          about the results we deliver.
+        </p>
+      </div>
+      <div class="swiper flex items-center">
+        <div class="">
+          <div class="">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-6 w-lg order-2 lg:order-1">
+                <div class="swiper mySwiperQuote">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <blockquote class="ts-quote">
+                        “Our team in Asia has become an indispensable part of
+                        our business. The talent quality is exceptional, and
+                        they've helped us scale operations far more efficiently
+                        than we ever could have on our own.”
+                      </blockquote>
+                      <p class="ts-subtext mt-4">
+                        They took care of compliance and HR so we could focus on
+                        growth.
+                      </p>
+                      <p class="ts-author mt-4 font-semibold">
+                        Emily Chen, CEO, Innovate Dynamics
+                      </p>
+                    </div>
+                    <div class="swiper-slide">
+                      <blockquote class="ts-quote">
+                        “Partnering with YTA has been transformative. Their
+                        offshore teams integrated seamlessly with our workflows,
+                        and we saw productivity gains within the first month.”
+                      </blockquote>
+                      <p class="ts-subtext mt-4">
+                        We needed a flexible solution to handle our growing
+                        support volume, and this was the perfect fit.
+                      </p>
+                      <p class="ts-author mt-4 font-semibold">
+                        Emily Chen, CEO, Innovate Dynamics
+                      </p>
+                    </div>
+                    <div class="swiper-slide">
+                      <blockquote class="ts-quote">
+                        “This is Text Three. Their offshore teams integrated
+                        seamlessly with our workflows, and we saw productivity
+                        gains within the first month.”
+                      </blockquote>
+                      <p class="ts-subtext mt-4">
+                        We needed a flexible solution to handle our growing
+                        support volume, and this was the perfect fit.
+                      </p>
+                      <p class="ts-author mt-4 font-semibold">
+                        Emily Chen, CEO, Innovate Dynamics
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slider-arrwo flex justify-start mt-6 cursor-pointer"
+                >
+                  <div class="button-prev rounded-full p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="21"
+                      viewBox="0 0 20 21"
+                      fill="none"
+                    >
+                      <path
+                        d="M7.97501 5.44165L2.91667 10.5L7.97501 15.5583"
+                        stroke="#292D32"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                      <path
+                        d="M17.0833 10.5H3.05833"
+                        stroke="#292D32"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <div class="button-next rounded-full p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="21"
+                      viewBox="0 0 20 21"
+                      fill="none"
+                    >
+                      <path
+                        d="M12.025 5.44165L17.0833 10.5L12.025 15.5583"
+                        stroke="#292D32"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                      <path
+                        d="M2.91667 10.5H16.9417"
+                        stroke="#292D32"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lg:col-span-6 flex gap-6 order-1 lg:order-2">
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="ts-card rounded-xl overflow-hidden relative">
+                        <div class="ts-country flex items-center gap-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <path
+                              d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                            <path
+                              d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                          </svg> England
+                        </div>
+                        <img
+                          src={ClientOne.src}
+                          alt="Emily Chen"
+                          class="w-full h-auto object-cover"
+                        />
+                        <div class="p-3 text-[#fff] ceo-details">
+                          <p class="font-medium">Emily Chen</p>
+                          <p class="text-sm opacity-80">
+                            CEO, Innovate Dynamics
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="ts-card rounded-xl overflow-hidden relative">
+                        <div class="ts-country flex items-center gap-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <path
+                              d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                            <path
+                              d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                          </svg> England
+                        </div>
+                        <img
+                          src={ClientTwo.src}
+                          alt="Emily Chen"
+                          class="w-full h-auto object-cover"
+                        />
+                        <div class="ceo-details text-[#fff]">
+                          <p class="font-medium">Michael Reynolds</p>
+                          <p class="text-sm opacity-80">
+                            COO, Ascent Media Group
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="ts-card rounded-xl overflow-hidden relative">
+                        <div class="ts-country flex items-center gap-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <path
+                              d="M10 11.1917C11.436 11.1917 12.6 10.0276 12.6 8.5917C12.6 7.15576 11.436 5.9917 10 5.9917C8.56408 5.9917 7.40002 7.15576 7.40002 8.5917C7.40002 10.0276 8.56408 11.1917 10 11.1917Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                            <path
+                              d="M3.01663 7.07508C4.65829 -0.141583 15.35 -0.13325 16.9833 7.08342C17.9416 11.3167 15.3083 14.9001 13 17.1168C11.325 18.7334 8.67496 18.7334 6.99163 17.1168C4.69163 14.9001 2.05829 11.3084 3.01663 7.07508Z"
+                              stroke="white"
+                              stroke-width="1.5"></path>
+                          </svg> England
+                        </div>
+                        <img
+                          src={ClientThree.src}
+                          alt="Emily Chen"
+                          class="w-full h-auto object-cover"
+                        />
+                        <div class="ceo-details text-[#fff]">
+                          <p class="font-medium">Michael Reynolds</p>
+                          <p class="text-sm opacity-80">
+                            COO, Ascent Media Group
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import Swiper from "swiper";
+    import { Autoplay, Navigation } from "swiper/modules";
+    import "swiper/css";
+    import "swiper/css/navigation";
+
+    const swiperNew = new Swiper(".mySwiper", {
+      modules: [Autoplay, Navigation],
+      loop: true,
+      spaceBetween: 30,
+      slidesPerView: 2,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: { nextEl: ".button-next", prevEl: ".button-prev" },
+    });
+
+    const swiperQuote = new Swiper(".mySwiperQuote", {
+      modules: [Autoplay, Navigation],
+      loop: true,
+      spaceBetween: 30,
+      allowTouchMove: false,
+      slidesPerView: 1,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: { nextEl: ".button-next", prevEl: ".button-prev" },
+    });
+  </script>
+
+  <section class="yta-stats bg-[#DCE3FF]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-y-8 justify-items-center">
+        {
+          stats.map((s) => (
+            <li class="text-center stat-wrapper">
+              <div
+                class="stat-number"
+                data-target={s.value}
+                data-suffix={s.suffix ?? ""}
+                data-prefix={s.prefix ?? ""}
+                aria-label={`${s.prefix ?? ""}${s.value}${s.suffix ?? ""}`}
+              >
+                {s.prefix ?? ""}
+                {s.value}
+                {s.suffix ?? ""}
+              </div>
+              <div class="stat-label mt-2">{s.label}</div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="yta-faq relative overflow-hidden">
+    <!-- dotted/grid background placeholder -->
+    <div class="faq-bg absolute inset-0 pointer-events-none" aria-hidden="true">
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+      <header class="text-center mb-8">
+        <h2 class="faq-title text-3xl sm:text-4xl font-semibold">
+          Frequently Asked <span class="accent">Questions</span>
+        </h2>
+        <p class="faq-sub mt-3 text-base sm:text-lg">
+          Find answers to the most common questions about hiring, payroll,
+          compliance, and working with Your Team in Asia. If you still need
+          help, please <a href="/contact" class="faq-link">contact us</a>.
+        </p>
+      </header>
+
+      <ul class="faq-list space-y-4">
+        {
+          faqs.map((item, i) => (
+            <li class="faq-item">
+              <button
+                class="faq-trigger"
+                aria-expanded={i === 0 ? "true" : "false"}
+                aria-controls={`faq-panel-${i}`}
+                id={`faq-trigger-${i}`}
+              >
+                <span class="faq-q">{item.q}</span>
+                <svg class="faq-caret" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                </svg>
+              </button>
+
+              <div
+                id={`faq-panel-${i}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${i}`}
+                class={`faq-panel ${i === 0 ? "open" : ""}`}
+              >
+                <p class="faq-a">{item.a}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var root = document.querySelector(".yta-faq");
+        var triggers = Array.prototype.slice.call(
+          root ? root.querySelectorAll(".faq-trigger") : []
+        );
+        var singleOpen = true;
+
+        function openPanel(btn) {
+          var panel = root.querySelector(
+            "#" + btn.getAttribute("aria-controls")
+          );
+          btn.setAttribute("aria-expanded", "true");
+          if (panel) panel.classList.add("open");
+        }
+        function closePanel(btn) {
+          var panel = root.querySelector(
+            "#" + btn.getAttribute("aria-controls")
+          );
+          btn.setAttribute("aria-expanded", "false");
+          if (panel) panel.classList.remove("open");
+        }
+
+        triggers.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var isOpen = btn.getAttribute("aria-expanded") === "true";
+            if (singleOpen) {
+              triggers.forEach(closePanel);
+            }
+            if (isOpen) {
+              closePanel(btn);
+            } else {
+              openPanel(btn);
+            }
+          });
+        });
+      });
+    </script>
+  </section>
+</Layout>

@@ -1,0 +1,47 @@
+<svg width="1440" height="851" viewBox="0 0 1440 851" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_n_29_305)">
+<rect width="1440" height="851" fill="#EEF1FF"/>
+</g>
+<g clip-path="url(#clip0_29_305)">
+<line x1="111.5" y1="2" x2="111.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="222.5" y1="2" x2="222.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="333.5" y1="2" x2="333.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="444.5" y1="2" x2="444.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="555.5" y1="2" x2="555.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="666.5" y1="2" x2="666.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="777.5" y1="2" x2="777.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="888.5" y1="2" x2="888.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="999.5" y1="2" x2="999.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="1110.5" y1="2" x2="1110.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="1221.5" y1="2" x2="1221.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="1332.5" y1="2" x2="1332.5" y2="874" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="0.5" x2="1440" y2="0.50003" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="125.214" x2="1440" y2="125.214" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="249.928" x2="1440" y2="249.928" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="374.643" x2="1440" y2="374.643" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="499.357" x2="1440" y2="499.357" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="624.071" x2="1440" y2="624.071" stroke="#5271FF" stroke-opacity="0.2"/>
+<line x1="4.61469e-08" y1="748.786" x2="1440" y2="748.786" stroke="#5271FF" stroke-opacity="0.2"/>
+</g>
+<defs>
+<filter id="filter0_n_29_305" x="0" y="0" width="1440" height="851" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.28571429848670959 0.28571429848670959" stitchTiles="stitch" numOctaves="3" result="noise" seed="8931" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(17, 24, 39, 0.2)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect1_noise_29_305">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<clipPath id="clip0_29_305">
+<rect width="1440" height="850" fill="white"/>
+</clipPath>
+</defs>
+</svg>

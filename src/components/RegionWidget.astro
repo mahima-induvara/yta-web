@@ -1,0 +1,272 @@
+---
+import Tanzania from "@assets/Tanzania.jpg";
+import USA from "@assets/USA.jpg";
+import UK from "@assets/UK.jpg";
+import UAE from "@assets/UAE.jpg";
+import Logo1 from "@assets/logos/real/gp.png";
+import Logo2 from "@assets/logos/real/px.png";
+import Logo3 from "@assets/logos/real/reim.png";
+import Logo4 from "@assets/logos/real/serencroft.png";
+import Logo5 from "@assets/logos/real/sofi.png";
+import Logo6 from "@assets/logos/real/taxin.png";
+import Logo7 from "@assets/logos/real/tur.png";
+import Logo8 from "@assets/logos/real/arth.png";
+import Logo9 from "@assets/logos/real/blanc.png";
+import Logo10 from "@assets/logos/real/block.png";
+import Logo11 from "@assets/logos/real/care.png";
+import Logo12 from "@assets/logos/real/dh.png";
+import Logo13 from "@assets/logos/real/ibc.png";
+
+const REGIONS = [
+  {
+    id: "uk",
+    name: "United Kingdom (20)",
+    desc: "uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+    bg: UK.src,
+    logos: [
+      Logo1.src,
+      Logo2.src,
+      Logo3.src,
+      Logo4.src,
+      Logo8.src,
+      Logo9.src,
+      Logo10.src,
+      Logo11.src,
+    ],
+  },
+  {
+    id: "usa",
+    name: "United States of America (2)",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    bg: USA.src,
+    logos: [Logo6.src, Logo12.src],
+  },
+  {
+    id: "uae",
+    name: "United Arab Emirates (2)",
+    desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    bg: UAE.src,
+    logos: [Logo8.src, Logo13.src],
+  },
+  {
+    id: "tz",
+    name: "Tanzania (1)",
+    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+    bg: Tanzania.src,
+    logos: [Logo7.src],
+  },
+];
+---
+
+<style lang="scss">
+  .region-widget {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    @media screen and (min-width: 640px) {
+      display: none;
+    }
+
+    .region-button {
+      position: relative;
+      padding: 13px 24px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+      color: #374151;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px; /* 130% */
+      letter-spacing: -0.2px;
+  
+
+      &:hover {
+        background: #f5f7ff;
+      }
+
+      &.active {
+        background: #eef2ff;
+        color: #5271ff;
+      }
+
+      .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        background: #5271ff;
+      }
+    }
+
+    .region-desc {
+      display: none;
+      margin-top: 8px;
+      color: #545454;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px; /* 131.25% */
+    }
+    .region-desc.active{
+      display: block;
+    }
+
+    .map-container {
+      position: relative;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      height: 350px;
+
+      img.bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiperLogoMap {
+        position: relative;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .swiper-slide {
+          .main-logos {
+            height: 40px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .swiper.swiperLogoMap .swiper-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+  }
+</style>
+
+<div class="region-widget mx-auto max-w-7xl px-4" id="regionWidget">
+  {
+    REGIONS.map((r) => (
+      <div class="region-button" data-region={r.id}>
+        <p>{r.name}</p>
+        <span class="region-desc">{r.desc}</span>
+        <div class="progress-bar" />
+      </div>
+    ))
+  }
+
+  <!-- <p class="region-desc" id="regionDesc">{REGIONS[0].desc}</p> -->
+
+  <div class="map-container px-4 mt-6">
+    <img id="regionBg" src={REGIONS[0].bg} alt="Map background" class="bg" />
+    <div class="swiper swiperLogoMap">
+      <div class="swiper-wrapper" id="logoWrapper">
+        {
+          REGIONS[0].logos.map((logo) => (
+            <div class="swiper-slide">
+              <img class="main-logos" src={logo} alt="Logo" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script></script>
+
+<script type="module" define:vars={{ REGIONS }}>
+  import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
+
+  const CoolSwiper = new Swiper(".swiperLogoMap", {
+    loop: true,
+    slidesPerView: "auto",
+    spaceBetween: 0,
+    speed: 5000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      0: { slidesPerView: 4 },
+      640: { slidesPerView: 4 },
+      1024: { slidesPerView: 7 },
+    },
+  });
+
+  // const REGIONS = JSON.parse(`<?= JSON.stringify(REGIONS) ?>`);
+  const widget = document.getElementById("regionWidget");
+  const buttons = widget.querySelectorAll(".region-button");
+  const descEl = document.querySelectorAll(".region-desc");
+  const bgEl = document.getElementById("regionBg");
+  const logoWrapper = document.getElementById("logoWrapper");
+  let currentIndex = 0;
+  let progressTimer;
+
+  // Progress bar logic
+  function startProgress() {
+    buttons.forEach((b) => {
+      b.classList.remove("active");
+      b.querySelector(".progress-bar").style.width = "0%";
+      b.querySelector(".progress-bar").style.transition = "none";
+    });
+    const activeBtn = buttons[currentIndex];
+    descEl.forEach((d,i)=>{
+      d.classList.remove("active");
+      if(i===currentIndex){
+        d.classList.add("active");
+      }
+    });
+    const bar = activeBtn.querySelector(".progress-bar");
+    activeBtn.classList.add("active");
+    bar.style.transition = "width 5s linear";
+    requestAnimationFrame(() => (bar.style.width = "100%"));
+
+    progressTimer = setTimeout(() => {
+      nextRegion();
+    }, 5000);
+  }
+
+  function nextRegion() {
+    buttons[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % REGIONS.length;
+    updateRegion(currentIndex);
+  }
+
+  function updateRegion(index) {
+    clearTimeout(progressTimer);
+    buttons.forEach((b) => b.classList.remove("active"));
+    const region = REGIONS[index];
+    //descEl.textContent = region.desc;
+    bgEl.src = region.bg;
+    logoWrapper.innerHTML = region.logos
+      .map((l) => `<div class='swiper-slide'><img src='${l}' alt='logo'></div>`)
+      .join("");
+    if (index === 1 || index === 2 || index === 3) {
+      CoolSwiper.autoplay.stop();
+    } else {
+      CoolSwiper.autoplay.start();
+    }
+    CoolSwiper.update();
+    currentIndex = index;
+    startProgress();
+  }
+
+  // Manual click
+  buttons.forEach((btn, i) => {
+    btn.addEventListener("click", () => updateRegion(i));
+  });
+
+  // Start
+  updateRegion(0);
+</script>

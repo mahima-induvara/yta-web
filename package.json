@@ -1,0 +1,30 @@
+{
+  "name": "yta-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "sync": "node ./scripts/fetch-airtable.js",
+    "dev": "npm run sync && astro dev",
+    "build": "pm run sync && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "astro": "^5.13.7",
+    "astro-seo": "^0.8.4",
+    "axios": "^1.12.2",
+    "fuse.js": "^7.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "sass": "^1.92.1",
+    "swiper": "^11.2.10",
+    "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.2"
+  }
+}

@@ -1,0 +1,23 @@
+---
+export async function getStaticPaths() {
+  // Example: define your categories & dynamic pages
+  return [
+    { params: { category: "marketing", slug: "social-media-manager" } },
+    { params: { category: "marketing", slug: "seo-specialist" } },
+    { params: { category: "hr", slug: "recruitment-specialist" } },
+    { params: { category: "finance", slug: "tax-analyst" } },
+  ];
+}
+
+const { category, slug } = Astro.params;
+
+// Titles for demo
+const prettyTitles = {
+  marketing: "Marketing",
+  hr: "HR & People Ops",
+  finance: "Finance & Accounting",
+};
+---
+
+<h1>{prettyTitles[category] || category} – {slug.replace(/-/g, " ")}</h1>
+<p>This is the <strong>{slug.replace(/-/g, " ")}</strong> page in the <strong>{prettyTitles[category]}</strong> category.</p>

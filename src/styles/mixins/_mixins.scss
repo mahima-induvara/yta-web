@@ -1,0 +1,87 @@
+/* Breakpoint sizes */
+$screen-xs-min: 320px;
+$screen-sm-min: 544px;
+$screen-md-min: 768px;
+$screen-lg-min: 1024px;
+// Media Queries
+
+@mixin desktops { 
+	@media (min-width: 1281px) {
+	  @content;
+	} 
+}
+  @mixin laptops { 
+	@media (min-width: 1025px) and (max-width: 1536px) {
+	  @content;
+	}
+  }
+  @mixin laptops-1440 { 
+	@media (min-width: 1370px) and (max-width: 1499px) {
+	  @content;
+	}
+  }
+  @mixin laptops-1536 { 
+	@media (min-width: 1500px) and (max-width: 1680px) {
+	  @content;
+	}
+  }
+  @mixin screen-1280 {
+    @media (min-width: 1270px) and (max-width: 1290px) {
+        @content;
+    }
+  }
+  @mixin screen-1080 {
+    @media (min-width: 1681px) {
+        @content;
+    }
+	}
+
+  @mixin tablets { 
+	@media (min-width: 768px) and (max-width: 1024px) {
+	  @content;
+	}
+  }
+
+  @mixin tab_landscape { 
+	@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	  @content ;
+	}
+  }
+
+  @mixin screen_2k { 
+	@media only screen and (min-width: 2560px) and (max-width: 3839px) {
+	  @content ;
+	}
+  }
+
+	@mixin screen_4k { 
+	@media only screen and (min-width: 3840px) {
+	  @content ;
+	}
+  }
+
+  @mixin mobile{ 
+	@media only screen 
+		and (min-device-width: 320px) 
+		and (max-device-width: 767px) {
+	  @content ;
+	}
+  }
+
+  @mixin mobile_landscape{ 
+	@media only screen 
+		and (min-device-width: 320px) 
+		and (max-device-width: 767px) 
+		and (orientation: landscape) {
+	  @content ;
+	}
+  }
+
+  @mixin iphone_678 { 
+	@media only screen 
+	and (min-device-width: 375px) 
+	and (max-device-width: 667px) 
+	and (-webkit-min-device-pixel-ratio: 2) { 
+	  @content ;
+	}
+  }

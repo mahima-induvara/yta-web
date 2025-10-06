@@ -1,0 +1,66 @@
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  font-size: 0.95rem;
+  color: #111827;
+  background: #fff;
+}
+.form-input:focus {
+  outline: 2px solid #5271ff;
+  outline-offset: 1px;
+  background: #fff;
+}
+.form-input::placeholder {
+  color: #9ca3af;
+}
+.form label{
+   color: #111827;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
+}
+
+input[type="checkbox"] {
+  color: #FFF;
+  font-family: "Inter Tight";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.off-canvas {
+  h2 {
+    color: #0f204b;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px; /* 131.25% */
+    letter-spacing: -0.32px;
+  }
+
+  .off-canvas-body {
+    min-height: calc(100vh - 124px); 
+    padding: 24px 32px;
+    border-radius: 24px;
+    background: url('../assets/blue-dashed-light.svg');
+    h3 {
+      color: #fff;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 32px; /* 133.333% */
+      letter-spacing: -0.24px;
+    }
+    p {
+      color: #fff;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px; /* 131.25% */
+    }
+  }
+}
