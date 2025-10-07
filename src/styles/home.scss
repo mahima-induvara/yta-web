@@ -699,11 +699,6 @@ $ink: #111827;
   width: 100%;
   height: auto;
 }
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .swiper-slide .sponsor-img {
   display: block;
@@ -876,7 +871,7 @@ $ink: #111827;
   padding: .25rem;
   margin-bottom: 1rem;
   overflow-x: scroll;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: rgba($brand,.6) rgba(0,0,0,.15);
 }
 .rf-pill {
