@@ -33,7 +33,6 @@ $line:  rgba(17,24,39,.14);
         font-weight: 600;
         line-height: 73px; /* 130.357% */
         letter-spacing: -0.56px;
-        margin-bottom: 16px;
         @include mobile{
           color: #FBFBFB;
           font-size: 36px;
@@ -355,6 +354,10 @@ $ink: #111827;
     font-style: normal;
     font-weight: 500;
     line-height: 42px; /* 131.25% */
+    @include mobile{
+        font-size: 20px;
+        line-height: 32px; /* 133.333% */
+    }
 }
 .ldr-footer {
   font-size: .95rem;
@@ -512,13 +515,11 @@ line-height: 24px; /* 133.333% */
 }
 
 .cta-sub {
-  color: #fff;
+  color: #FBFBFB;
   text-align: center;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 42px; /* 131.25% */
-  letter-spacing: -0.32px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px; /* 131.25% */
 }
 
 /* Button */

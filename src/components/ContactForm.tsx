@@ -84,14 +84,14 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="contact-area relative max-w-7xl mx-auto text-white py-16 grid lg:grid-cols-2 gap-10">
+    <div className="contact-area relative max-w-7xl mx-auto text-white py-[32px] grid lg:grid-cols-2 gap-10">
       {/* Left content */}
       <div className="px-6 sm:pl-12 flex flex-col justify-between">
         <div className="title-wrapper">
           <h2 className="yta-contact-title">
             We make it easy <br /> to recruit globally
           </h2>
-          <p className="mt-3 text-white/90 max-w-md contact-desc">
+          <p className="mt-[16px] text-white/90 max-w-md contact-desc">
             Remote eliminates barriers to international hiring so great
             companies can work with great people, no matter where those people
             are.
@@ -210,11 +210,7 @@ export default function ContactForm() {
             required
           />
           <span>
-            I consent to receiving information and/or materials from Your Team
-            in Asia (YTA) about its products, services, events and/or
-            information, including latest information on hiring and employment
-            trends. I have read and accept for my personal data to be processed
-            in accordance with YTA’s{" "}
+            I consent to receiving information and/or materials from Your Team in Asia (YTA) about its products, services, events and/or information, including latest information on hiring and employment trends. I have read and accept for my personal data to be processed in accordance with YTA's {" "}
             <a href="/privacy" className="underline">
               Privacy Policy
             </a>

@@ -157,12 +157,12 @@ const {
             <span class="font-medium">800+ Full-Time Hires, Ready to Scale With You</span>
           </div>
 
-          <h1 class="yta-about-main-text">
+          <h1 class="yta-about-main-text b-[8px]">
             Talent is everywhere, opportunity<br />
             should be too
           </h1>
 
-          <p class="text-lg text-white/80 max-w-xl mx-auto">
+          <p class="text-lg text-white/80 max-w-xl mx-auto mb-[40px]">
             Remote eliminates barriers to international hiring so great
             companies can work with great people, no matter where those people
             are.
@@ -250,11 +250,11 @@ const {
     <div class="experts-bg absolute inset-0" aria-hidden="true"></div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <header class="text-left mb-10">
+      <header class="text-left mb-[64px]">
         <h2 class="text-3xl sm:text-4xl font-semibold text-[#111827]">
           Our <span class="text-[#5271FF]">expert</span>
         </h2>
-        <p class="mt-3 max-w-4xl text-[#111827]/80 text-base">
+        <p class="mt-[8px] max-w-4xl text-[#111827]/80 text-base">
           Our Elite, employment-based administration team brings a wealth of experience and backgrounds,all with high levels of attention to detail. This is why each client and YTA match is unquestionably unique.
         </p>
       </header>
@@ -304,11 +304,11 @@ const {
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <header class="text-center mb-10">
+      <header class="text-center mb-[64px]">
         <h2 class="jr-title text-3xl sm:text-4xl font-semibold">
           Our <span class="accent">Journey</span>
         </h2>
-        <p class="jr-sub mt-3 max-w-2xl mx-auto">
+        <p class="jr-sub mt-[8px] max-w-2xl mx-auto">
           From our humble beginnings to our current position as a trusted partner for businesses worldwide, our journey is one of continuous growth and innovation.
         </p>
       </header>
@@ -328,7 +328,7 @@ const {
                 </figure>
 
                 <div
-                  class={`jr-copy relative ${leftSide ? "md:pl-10" : "md:pr-10 md:order-1"}`}
+                  class={`jr-copy relative flex flex-col jr-copy justify-center ${leftSide ? "md:pl-10 text-left" : "md:pr-10 md:order-1 text-left lg:text-right"}`}
                 >
                   <span
                     class={`jr-dot ${leftSide ? "md:left-0 md:-translate-x-1/2" : "md:right-0 md:translate-x-1/2"}`}
@@ -351,11 +351,11 @@ const {
   <section class="leadership-root">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <!-- Header -->
-      <header class="text-center mb-10">
+      <header class="text-center mb-[64px]">
         <h2 class="ldr-title text-3xl sm:text-4xl font-semibold">
           Our <span class="accent">founder</span>
         </h2>
-        <p class="ldr-sub mt-2 text-base text-[#111827]/75">
+        <p class="ldr-sub mt-[8px] text-base text-[#111827]/75">
           Don't just take our word for it, see what our clients have to say about the results we deliver.</p>
       </header>
 
@@ -379,7 +379,7 @@ const {
   <section id="image-xcard">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-0 lg:py-14">
          <!-- Header -->
-      <header class="text-center mb-10">
+      <header class="text-center mb-[64px]">
         <h2 class="ldr-title text-3xl sm:text-4xl font-semibold">
           Our leadership <span class="accent">team</span>
         </h2>
@@ -498,7 +498,7 @@ const {
       </div>
 
       <!-- Cards -->
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-12 grid gap-[16px] sm:grid-cols-2 lg:grid-cols-3">
         {
           industriesWithDetails.map((i) => (
             <article class="ind-card rounded-2xl p-6">
