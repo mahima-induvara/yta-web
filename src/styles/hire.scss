@@ -31,7 +31,7 @@ $line: rgba(17,24,39,.16);
   white-space: nowrap;
   gap: 8px;
   cursor: grabbing;
-  padding: .5rem .75rem;
+  padding: 7px 16px;
   border-radius: 8px;
   border: 1px solid #C5D0FF;
   background: #FBFBFB;
@@ -42,10 +42,11 @@ $line: rgba(17,24,39,.16);
   line-height: 21px; /* 131.25% */
   transition: border .15s ease, background .15s ease;
 }
+
 .rf-pill:hover { border-color: rgba($brand,.6); }
 .rf-pill.active {
   border-color: $brand;
-  background: rgba($brand,.08);
+  background: #DCE3FF;
   color: $brand;
 }
 .rf-pill-ico { font-size: 1rem; }

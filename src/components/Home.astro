@@ -76,7 +76,7 @@ const steps = [
   },
 ];
 
-const { price = "£945" } = Astro.props;
+const { price = "£945", priceTech = "£1,199" } = Astro.props;
 
 const badges = ["Hire < 6 weeks", "No employment risk", "Transparent"];
 
@@ -109,7 +109,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12 sm:mt-16 lg:mt-0">
       <!-- LEFT: Copy -->
       <div class="lg:col-span-6 space-y-6 ">
-        <div class="inline-flex items-center gap-2 py-1 text-sm faces-wrapper">
+        <div class="inline-flex items-center gap-2 text-sm faces-wrapper">
           <img src={faces.src} alt="" />
           <span class="font-medium">150+ Skilled Hires, Ready to Power Your Growth</span>
         </div>
@@ -120,7 +120,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
           Businesses to Scale.
         </h1>
 
-        <p class="text-lg text-white/80 max-w-xl text-center lg:text-left">
+        <p class="text-lg text-white/80 max-w-xl text-center lg:text-left yta-hero-desc">
           Save up to 70% by offshoring. Hire professionals across Tech,
           Accounting, Admin, and Customer Support, trusted and hired by global
           business leaders.
@@ -234,12 +234,12 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
   <div class="hiw-bg absolute inset-0 pointer-events-none" aria-hidden="true">
   </div>
 
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative lg:mb-[40px]">
     <div class="text-center max-w-3xl mx-auto">
       <h2 class="hiw-title text-center">
         How it <span class="hiw-accent">works</span>
       </h2>
-      <p class="hiw-lead mt-3 text-base sm:text-lg w-auto lg:w-lg mx-auto">
+      <p class="hiw-lead mt-[8px] text-base sm:text-lg w-auto lg:w-lg mx-auto">
         Our process starts with a discovery call where we understand your requirements, share our solutions, and finalize the job description. Once confirmed, we begin recruitment to find the right talent for your team.
       </p>
     </div>
@@ -299,7 +299,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       <h2 class="hiw-title">
         Creating Human Connection to Drive Meaningful <span class="hiw-accent">Impact</span>
       </h2>
-      <p class="hiw-lead-left mt-3">
+      <p class="hiw-lead-left mt-[8px]">
         Our diverse, global talent helps clients transform every aspect of their business and achieve exceptional results. Submit a custom job description and we'll help you find the perfect candidate. please <a href="#/contact">contact us.</a></p>
     </div>
     <JobComponent jobs={jobs.slice(0, 6)} client:load />
@@ -319,7 +319,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       <h2 class="pricing-title">
         <span class="accent">Pricing</span> for full-time staff
       </h2>
-      <p class="pricing-sub mt-3 text-base sm:text-lg">
+      <p class="pricing-sub mt-[8px] text-base sm:text-lg">
         Want hiring flexibility? Choose On-Demand. Hiring long-term? Save more
         with Partner.
       </p>
@@ -333,15 +333,15 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
     <!-- Card -->
     <div class="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="mt-10 flex justify-center">
-      <article class="pricing-card left-pricing-card rounded-3xl p-6 sm:p-8 w-full max-w-2xl">
+      <article class="pricing-card left-pricing-card rounded-3xl p-[24px] w-full max-w-2xl">
         <header>
-          <h3 class="plan-title">On-Demand Plan</h3>
+          <h3 class="plan-title">Tech Roles</h3>
           <p class="plan-sub">
-            Long-term hiring and building dedicated offshore teams.
+            E2E Recruitment with technical assessments & coding challenges
           </p>
 
           <div class="price-row">
-            <span class="price">{price}</span>
+            <span class="price">{priceTech}</span>
             <span class="per">/month</span>
           </div>
         </header>
@@ -354,31 +354,25 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Dedicated offshore employee (40 hours/week)
+                Dedicated Account Manager familiar with tech stacks
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Cost saving compared to UK salaries
+                Performance Reviews (Every 3 Months with Year End Review)
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Managed offshore recruitment and HR support 
+                Fully GDPR compliant (Both local and GDPR covered)
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Team dashboard for attendance & productivity tracking 
-              </p>
-            </li>
-            <li class="incl-item">
-              <span class="tick" aria-hidden="true">✓</span>
-              <p>
-                Fully GDPR compliant
+                All inclusive pricing (Salary, Pension, Tax and YTA Fees)
               </p>
             </li>
           </ul>
@@ -393,11 +387,11 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       </article>
     </div>
       <div class="mt-0 lg:mt-10 flex justify-center">
-      <article class="pricing-card right-pricing-card rounded-3xl p-6 sm:p-8 w-full max-w-2xl">
-        <header>
-          <h3 class="plan-title">On-Demand Plan</h3>
+      <article class="pricing-card right-pricing-card rounded-3xl p-[24px] w-full max-w-2xl">
+                <header>
+          <h3 class="plan-title">Non Tech Roles</h3>
           <p class="plan-sub">
-            Long-term hiring and building dedicated offshore teams.
+            E2E with Role-specific tests (typing speed, communication, etc.)
           </p>
 
           <div class="price-row">
@@ -414,32 +408,27 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Dedicated offshore employee 40 hours/week
+                Dedicated Account Manager experienced in back-office functions
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Cost saving compared to UK salaries
+                Performance Reviews (Every 3 Months with Year End Review)
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Managed offshore recruitment and HR support 
+                Fully GDPR compliant (Both local and GDPR covered)
               </p>
             </li>
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
               <p>
-                Team dashboard for attendance & productivity tracking
+               All inclusive pricing (Salary, Pension, Tax and YTA Fees)
               </p>
             </li>
-            <li class="incl-item">
-              <span class="tick" aria-hidden="true">✓</span>
-              <p>
-                Fully GDPR compliant
-              </p>
           </ul>
         </div>
 
@@ -449,6 +438,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
         >
           Get started
         </a>
+
       </article>
     </div>
   </div>
@@ -457,11 +447,11 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
 <section class="testimonials-root">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
     <!-- Heading -->
-    <div class="text-center mb-10">
+    <div class="text-center mb-[64px]">
       <h2 class="ts-title">
         <span class="accent">Success Stories</span> from Global Companies Like Yours
       </h2>
-      <p class="ts-sub mt-3">
+      <p class="ts-sub mt-[8px]">
         Don't just take our word for it, see what our clients have to say about
         the results we deliver.
       </p>
@@ -716,7 +706,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
     <h2 class="pf-title">
       Our customer <span class="accent">portfolio</span>
     </h2>
-    <p class="pf-sub mt-3 max-w-3xl mx-auto text-base sm:text-lg">
+    <p class="pf-sub mt-[8px] max-w-3xl mx-auto text-base sm:text-lg">
       Our commitment to excellence and our deep understanding of a wide
       range of sectors have made us a trusted partner for organizations
       seeking to innovate and expand their global presence.
@@ -765,7 +755,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
 
 <RegionWidget />
 
-<section class="yta-cta relative overflow-hidden my-8 py-6">
+<section class="yta-cta relative overflow-hidden mb-[120px] py-6">
   <div class="yta-cta-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <img src={TeamA.src} alt="Team A" class="absolute hidden sm:block lg:block bottom-0 left-25" />
     <img src={TeamB.src} alt="Team B" class="absolute hidden sm:block lg:block bottom-0 right-25" />
@@ -774,7 +764,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       Hire with Your Team in Asia
     </h2>
 
-    <p class="cta-sub mt-3 max-w-2xl mx-auto text-base sm:text-lg">
+    <p class="cta-sub mt-3 max-w-2xl mx-auto">
       At Your Team in Asia, we don’t just fill roles, we help businesses build
       sustainable offshore teams that deliver lasting results. Take the first step
       towards smarter, leaner growth today!

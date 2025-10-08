@@ -31,3 +31,6 @@ body{
     display: flex;
     justify-content: center;
 }
+button.rf-pill:first-child {
+    gap: 0;
+}
