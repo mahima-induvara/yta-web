@@ -387,7 +387,7 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
           ))}
         </div>
         {category === "All Categories" && (
-          <div className="mt-10 text-center">
+          <div className="mt-[32px] text-center">
             <a
               href="/hire"
               className="jr-viewall flex items-center justify-center gap-2"

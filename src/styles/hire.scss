@@ -677,7 +677,17 @@ textarea.yta-input { resize: vertical; }
 .faq-title { letter-spacing: -0.01em; }
 .faq-title .accent { color: $brand; }
 .faq-sub { color: $muted; }
-.faq-link { color: $brand; text-decoration: underline; text-underline-offset: 2px; }
+.faq-link { color: #515151;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 21px;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font; }
 
 .faq-item {
   list-style: none;

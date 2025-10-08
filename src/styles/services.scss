@@ -143,6 +143,39 @@ $ink: #111827;
   border-radius: 2rem;
 }
 
+/* Video overlay controls */
+// .video-wrapper {
+//   position: absolute;
+// }
+
+.video-toggle {
+  position: absolute;
+  right: 30px;
+  bottom: 35px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(0,0,0,0.5);
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  transition: background .15s ease, transform .08s ease;
+}
+
+.video-toggle:active { transform: scale(.98); }
+
+.video-toggle .icon { display: block; }
+.video-toggle .icon-play { display: none; }
+
+.video-wrapper.paused .video-toggle .icon-play { display: block; }
+.video-wrapper.paused .video-toggle .icon-pause { display: none; }
+.video-wrapper.playing .video-toggle .icon-play { display: none; }
+.video-wrapper.playing .video-toggle .icon-pause { display: block; }
+
 .tag {
   background: rgba($brand, 0.08);
   color: $brand;
@@ -315,7 +348,17 @@ yta-faq { color: $ink; }
 .faq-title { letter-spacing: -0.01em; }
 .faq-title .accent { color: $brand; }
 .faq-sub { color: $muted; }
-.faq-link { color: $brand; text-decoration: underline; text-underline-offset: 2px; }
+.faq-link { color: #515151;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 21px;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font; }
 
 .faq-item {
   list-style: none;

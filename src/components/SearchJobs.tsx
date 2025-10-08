@@ -251,7 +251,7 @@ export default function SearchJobs({ jobs }: { jobs: Job[] }) {
       </section>
 
       <section className="jr-root">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col justify-evenly gap-2">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 mt-[80px] mb-[65px] flex flex-col justify-evenly gap-2">
           {/* Pills */}
           <div className="rf-pills">
             {CATEGORIES.map((cat) => (
@@ -492,7 +492,7 @@ export default function SearchJobs({ jobs }: { jobs: Job[] }) {
               ))}
             </div>
 
-            <div className="mt-10 text-center">
+            <div className="mt-[32px] text-center">
               <nav
                 className="pagination-container"
                 aria-label="Page navigation"

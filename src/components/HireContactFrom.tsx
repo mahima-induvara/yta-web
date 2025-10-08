@@ -143,11 +143,11 @@ export default function HireContactForm() {
         <input
           type="checkbox"
           name="consent"
-          className="mt-1"
+          className="mt-1 ml-[8px]"
           checked={form.consent}
           onChange={handleChange}
         />
-        <span className="contact-terms mt-2">
+        <span className="contact-terms mt-2 ml-[8px]">
           I consent to receiving information and/or materials from Your Team in
           Asia (YTA) about its products, services, events and/or information,
           including latest information on hiring and employment trends. I have
