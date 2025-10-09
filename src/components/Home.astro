@@ -22,29 +22,6 @@ import TeamB from '@assets/right-team.png'
 import ContactDrawer from "@components/ContactDrawer";
 import RegionWidget from "@components/RegionWidget.astro";
 
-const testimonials = [
-  {
-    id: 1,
-    quote:
-      "Our team in Asia has become an indispensable part of our business. The talent quality is exceptional, and they’ve helped us scale operations far more efficiently than we ever could have on our own.",
-    sub: "We needed a flexible solution to handle our growing support volume, and this was the perfect fit.",
-    name: "Emily Chen",
-    title: "CEO, Innovate Dynamics",
-    country: "England",
-    image: ClientOne.src,
-  },
-  {
-    id: 2,
-    quote:
-      "Partnering with YTA has been transformative. Their offshore teams integrated seamlessly with our workflows, and we saw productivity gains within the first month.",
-    sub: "They took care of compliance and HR so we could focus on growth.",
-    name: "Michael Reynolds",
-    title: "COO, Ascent Media Group",
-    country: "England",
-    image: ClientTwo.src,
-  },
-];
-
 const jobs = jobsData.map(job => ({
   title: job.Job_Title,
   benefit: job.Save_Up,
@@ -128,7 +105,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
 
         <div class="flex flex-col lg:flex-row flex-wrap gap-4">
           <a
-            href="/quote"
+            href="/contact?getStarted=true"
             class="justify-center rounded-xl bg-white px-6 py-3 text-[#152651] font-medium hover:opacity-90 w-auto inline-flex items-center gap-2"
           >
             Book a call <svg
@@ -153,7 +130,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
             </svg>
           </a>
           <a
-            href="/talent"
+            href="/hire"
             class="inline-flex justify-center rounded-xl border border-white px-6 py-3 font-medium hover:bg-white hover:text-[#152651]"
           >
             Browse Specialist Talent
@@ -353,7 +330,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
         <div class="rule mb-5"></div>
 
         <div>
-          <h4 class="incl-title">What’s included?</h4>
+          <h4 class="incl-title">What's included?</h4>
           <ul class="mt-3 space-y-6">
             <li class="incl-item">
               <span class="tick" aria-hidden="true">✓</span>
@@ -383,7 +360,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
         </div>
 
         <a
-          href="/get-started"
+          href="/contact?subject=Pricing%20Inquiry%20-%20Tech%20Roles"
           class="cta-btn mt-6 inline-flex w-full items-center justify-center"
         >
           Get started
@@ -437,7 +414,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
         </div>
 
         <a
-          href="/get-started"
+          href="/contact?subject=Pricing%20Inquiry%20-%20Non%20Tech%20Roles"
           class="cta-btn mt-6 inline-flex w-full items-center justify-center"
         >
           Get started
@@ -469,45 +446,44 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <blockquote class="ts-quote">
-                      “Our team in Asia has become an indispensable part of our
-                      business. The talent quality is exceptional, and they've
-                      helped us scale operations far more efficiently than we
-                      ever could have on our own.”
+                      “Setting up operations in Sri Lanka has been transformative for Care Hires. YTA helped us
+quickly hire skilled developers, enabling rapid development of our enterprise care workforce management software.”
                     </blockquote>
                     <p class="ts-subtext mt-4">
-                      They took care of compliance and HR so we could focus on
-                      growth.
+                      YTA's expertise in global recruitment and workforce
+                        solutions has been instrumental in our growth.
                     </p>
                     <p class="ts-author mt-4 font-semibold">
-                      Emily Chen, CEO, Innovate Dynamics
+                      Ian Mattoli, Chairman, Care Hires Limited
                     </p>
                   </div>
                   <div class="swiper-slide">
                     <blockquote class="ts-quote">
-                      “Partnering with YTA has been transformative. Their
-                      offshore teams integrated seamlessly with our workflows,
-                      and we saw productivity gains within the first month.”
+                     “This partnership has transformed our back-office
+                        operations, allowing us to scale efficiently while
+                        maintaining high standards. YTA is a true extension of
+                        our team.”
                     </blockquote>
                     <p class="ts-subtext mt-4">
-                      We needed a flexible solution to handle our growing
-                      support volume, and this was the perfect fit.
+                     YTA's expertise in global recruitment and workforce
+                        solutions has been instrumental in our growth.
                     </p>
                     <p class="ts-author mt-4 font-semibold">
-                      Emily Chen, CEO, Innovate Dynamics
+                      Jenny Payne, CEO, IBC
                     </p>
                   </div>
                   <div class="swiper-slide">
                     <blockquote class="ts-quote">
-                      “This is Text Three. Their offshore teams integrated
-                      seamlessly with our workflows, and we saw productivity
-                      gains within the first month.”
+                      “YTA has been an exceptional partner, helping us build a
+                        robust and scalable offshore team that has become
+                        integral to our success.”
                     </blockquote>
                     <p class="ts-subtext mt-4">
-                      We needed a flexible solution to handle our growing
-                      support volume, and this was the perfect fit.
+                      YTA's expertise in global recruitment and workforce
+                        solutions has been instrumental in our growth.
                     </p>
                     <p class="ts-author mt-4 font-semibold">
-                      Emily Chen, CEO, Innovate Dynamics
+                      Suleman Sacranie, Co-Founder of Care Hires
                     </p>
                   </div>
                 </div>
@@ -578,8 +554,8 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
                         class="w-full h-auto object-cover sponsor-img"
                       />
                       <div class="p-3 text-[#fff] ceo-details">
-                        <p class="font-medium">Emily Chen</p>
-                        <p class="text-sm opacity-80">CEO, Innovate Dynamics</p>
+                        <p class="font-medium">Ian Mattoli</p>
+                        <p class="text-sm opacity-80">Chairman, Care Hires Limited</p>
                       </div>
                     </div>
                   </div>
@@ -595,9 +571,9 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
                         class="w-full h-auto object-cover sponsor-img"
                       />
                       <div class="ceo-details text-[#fff]">
-                        <p class="font-medium">Michael Reynolds</p>
+                        <p class="font-medium">Jenny Payne</p>
                         <p class="text-sm opacity-80">
-                          COO, Ascent Media Group
+                          Chief Executive Officer, IBC
                         </p>
                       </div>
                     </div>
@@ -614,9 +590,9 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
                         class="w-full h-auto object-cover sponsor-img"
                       />
                       <div class="ceo-details text-[#fff]">
-                        <p class="font-medium">Michael Reynolds</p>
+                        <p class="font-medium">Suleman Sacranie</p>
                         <p class="text-sm opacity-80">
-                          COO, Ascent Media Group
+                          Co-Founder of Care Hires
                         </p>
                       </div>
                     </div>

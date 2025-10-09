@@ -1,22 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
+  subject: string;
   message: string;
   consent: boolean;
 }
 export default function ContactForm() {
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const s = url.searchParams.get("subject") || "";
+    const a = url.searchParams.get("getStarted") || "";
+    if (s) setForm({ ...form, subject: s });
+    if (a === "true") window.scrollTo({ top: 750, left: 0, behavior: 'smooth' });
+
+  }, []);
+
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
+    subject: "",
     message: "",
     consent: false,
   });
+
+
 
   const transformToAirtable = (airtableData: any) => {
     return {
@@ -26,6 +39,7 @@ export default function ContactForm() {
             Name: airtableData.name,
             WorkEmail: airtableData.email,
             Mobile: airtableData.phone,
+            Subject: airtableData.subject,
             Description: airtableData.message,
             Consent: airtableData.consent ? "Yes" : "No",
           },
@@ -76,6 +90,7 @@ export default function ContactForm() {
         name: "",
         email: "",
         phone: "",
+        subject: "",
         message: "",
         consent: false,
       });
@@ -168,22 +183,41 @@ export default function ContactForm() {
             />
           </div>
         </div>
-        <div>
-          <label
-            htmlFor="phone"
-            className="block text-sm/6 font-medium text-gray-900 mb-2"
-          >
-            Phone
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter your phone number"
-            value={form.phone}
-            onChange={handleChange}
-            className="form-input"
-          />
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm/6 font-medium text-gray-900 mb-2"
+            >
+              Phone
+            </label>
+            <input
+              type="number"
+              name="phone"
+              placeholder="Enter your phone number"
+              value={form.phone}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="subject"
+              className="block text-sm/6 font-medium text-gray-900 mb-2"
+            >
+              Subject
+            </label>
+            <input
+              type="text"
+              name="subject"
+              placeholder="Enter the subject"
+              value={form.subject}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </div>
         </div>
+
         <div>
           <label
             htmlFor="message"
@@ -210,7 +244,11 @@ export default function ContactForm() {
             required
           />
           <span>
-            I consent to receiving information and/or materials from Your Team in Asia (YTA) about its products, services, events and/or information, including latest information on hiring and employment trends. I have read and accept for my personal data to be processed in accordance with YTA's {" "}
+            I consent to receiving information and/or materials from Your Team
+            in Asia (YTA) about its products, services, events and/or
+            information, including latest information on hiring and employment
+            trends. I have read and accept for my personal data to be processed
+            in accordance with YTA's{" "}
             <a href="/privacy" className="underline">
               Privacy Policy
             </a>
@@ -219,9 +257,12 @@ export default function ContactForm() {
         </label>
         <button
           type="submit"
-          className="submit-btn w-full bg-white text-[#152651] py-3 rounded-lg font-semibold hover:opacity-85 transition"
+          className="submit-btn w-full bg-white text-[#5271FF] py-3 rounded-lg font-semibold hover:opacity-85 transition flex items-center justify-center gap-2"
         >
-          Send message →
+          Send message <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+  <path d="M4.66699 10H16.3337" stroke="#5271FF" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.5 4.16699L16.3333 10.0003L10.5 15.8337" stroke="#5271FF" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
         </button>
         {error && <p className="text-sm text-red-600">{error}</p>}
         {success && (

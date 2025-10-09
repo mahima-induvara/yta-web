@@ -6,7 +6,7 @@ import ContactSection from "@components/ContactForm";
 
 <Layout title="Contact Us - Your Team in Asia" description="Get in touch with Your Team in Asia to learn how we can help your UK business build a high-performing remote team in Sri Lanka. Contact us today for more information.">
   <section class="contact-root relative py-16 px-4 sm:px-6 lg:px-8">
-    <ContactSection client:load />
+    <ContactSection client:only="react" />
   </section>
  <section class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
         <div class="text-center max-w-4xl mx-auto">
@@ -14,7 +14,7 @@ import ContactSection from "@components/ContactForm";
           Schedule a <span class="accent">Discovery Call</span>
         </h2>
         <p class="ind-sub mt-3 text-base">
-          During this 30-minute session, we’ll learn about your hiring needs, walk you through our talent sourcing process, and show you how your remote team can seamlessly integrate with your operations.
+          During this 30-minute session, we'll learn about your hiring needs, walk you through our talent sourcing process, and show you how your remote team can seamlessly integrate with your operations.
         </p>
       </div>
         <div class="calendly-inline-widget" data-url="https://calendly.com/mewan-yourteaminasia/30min?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>

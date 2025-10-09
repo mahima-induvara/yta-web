@@ -359,16 +359,21 @@ $white: #ffffff;
 }
 
 .jr-viewall {
-  color: #5271ff;
+  display: inline-flex;
+  border-radius: 8px;
+  border: 1px solid #0F204B;
+  background: #152651;
+  color: #fff;
   text-align: center;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 133.333% */
+  padding: 10px 24px 10px 24px;
+  justify-content: center;
+  align-items: center;
 }
-.jr-viewall:hover {
-  text-decoration: underline;
-}
+
 
 .pricing-root {
   background: url("../assets/ttw.svg");
@@ -808,6 +813,13 @@ $ink: #111827;
   font-size: 16px;
   font-weight: 400;
   line-height: 21px; /* 131.25% */
+}
+.view-more{
+color: #152651;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px; /* 131.25% */
 }
 
 /* Button */

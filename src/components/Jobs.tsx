@@ -384,11 +384,12 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
         </div>
         {category === "All Categories" && (
           <div className="mt-[32px] text-center">
+            <p className="mb-[16px] view-more">Click the button below to see more openings</p>
             <a
               href="/hire"
-              className="jr-viewall flex items-center justify-center gap-2"
+              className="jr-viewall flex items-center justify-center gap-2 hover:gap-3 mx-auto transition-all duration-300"
             >
-              View all roles{" "}
+              Explore all jobs{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -398,14 +399,14 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
               >
                 <path
                   d="M4.16669 10H15.8334"
-                  stroke="#5271FF"
+                  stroke="#ffffff"
                   strokeWidth="1.66667"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M10 4.16675L15.8333 10.0001L10 15.8334"
-                  stroke="#5271FF"
+                  stroke="#ffffff"
                   strokeWidth="1.66667"
                   strokeLinecap="round"
                   strokeLinejoin="round"

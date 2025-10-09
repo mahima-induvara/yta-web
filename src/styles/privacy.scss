@@ -1,0 +1,100 @@
+/* ===== YTA — Privacy Policy Page ===== */
+$brand: #5271ff;
+$ink:   #111827;
+$muted: rgba(17,24,39,.75);
+$line:  rgba(17,24,39,.14);
+$card:  #ffffff;
+
+.pp-root { color: $ink; }
+
+/* Background placeholder (replace with your SVG if you like) */
+// .pp-bg {
+//   background:
+//     radial-gradient(1px 1px at 18px 18px, rgba(17,24,39,.06) 1px, transparent 1px),
+//     linear-gradient(transparent 79px, rgba(17,24,39,.08) 80px),
+//     linear-gradient(90deg, transparent 79px, rgba(17,24,39,.08) 80px);
+//   background-size: 36px 36px, 80px 80px, 80px 80px;
+//   opacity: .25;
+// }
+
+.pp-title { letter-spacing: -0.01em; }
+.pp-title .accent { color: $brand; }
+.pp-sub { color: $muted; }
+.pp-meta { color: rgba($ink,.65); }
+
+/* TOC */
+.pp-toc {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.pp-toc-title {
+  font-weight: 600; margin-bottom: .5rem;
+}
+.pp-toc-list {
+  display: grid; gap: .25rem;
+  a {
+    display: block; padding: .4rem .5rem; border-radius: .5rem;
+    color: $ink; text-decoration: none;
+    &:hover { background: rgba($brand,.08); color: $brand; }
+  }
+}
+
+/* Article cards */
+.pp-article { scroll-margin-top: 80px; }
+.pp-card {
+  display: block; 
+  margin-bottom: 1.5rem;
+  background: $card;
+  border: 1px solid $line;
+  border-radius: 14px;
+  padding: 1.25rem 1.25rem;
+}
+.pp-card h2 {
+  font-weight: 700; font-size: 1.15rem; margin-bottom: .5rem;
+}
+.pp-card p { color: rgba($ink,.9); }
+.pp-list { margin: .5rem 0 0 0; display: grid; gap: .35rem; color: $muted; padding-left: 1.2rem;
+  li { list-style: inside disc; }
+}
+
+/* Table */
+.pp-table {
+  width: 100%; margin-top: .75rem; border-collapse: collapse; font-size: .95rem;
+  th, td { border: 1px solid $line; padding: .6rem .7rem; }
+  thead th { background: rgba($brand,.08); color: $ink; text-align: left; }
+}
+
+/* Details */
+.pp-details {
+  margin-top: .6rem; border: 1px dashed $line; border-radius: 10px; padding: .6rem .8rem;
+  summary { cursor: pointer; font-weight: 600; color: $brand; }
+}
+
+/* Back to top */
+.pp-backtop {
+  display: inline-block; margin-top: .25rem;
+  padding: .6rem 1rem; border-radius: .6rem;
+  background: $brand; color: #fff; text-decoration: none; font-weight: 600;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,.12);
+  transition: opacity .2s ease;
+  &:hover { opacity: .95; }
+  color: #fff !important;
+
+}
+
+/* Links */
+.pp-root a { color: $brand; }
+
+/* Small screens */
+@media (max-width: 1024px) {
+  .pp-toc { position: static; }
+}
+.pp-description{
+    color: #0F204B;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px; /* 131.25% */
+}

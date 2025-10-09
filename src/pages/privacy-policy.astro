@@ -1,0 +1,210 @@
+---
+import '@styles/privacy.scss';
+import Layout from "@layouts/Layout.astro";
+const org = {
+  name: "Your Team in Asia (YTA)",
+  url: "https://yourteaminasia.com",
+  email: "dpo@yourteaminasia.com",
+  address: " Design Boo Private Limited, 1st Floor, No 40, Poorwarama Road, Nugegoda, Sri Lanka",
+  lastUpdated: "2025-10-08",
+};
+const title = "Privacy Policy — Your Team in Asia";
+const description =
+  "How Your Team in Asia (YTA) collects, uses, and protects your personal data. Learn about your rights, our lawful bases, data retention, and contact information.";
+---
+<Layout title={title} description={description}>
+    <main class="pp-root relative overflow-hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Optional dotted/grid background placeholder -->
+      <div class="pp-bg absolute inset-0" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header -->
+        <header class="mb-8 text-center">
+          <h1 class="pp-title text-3xl sm:text-4xl font-semibold">
+            Privacy <span class="accent">Policy</span>
+          </h1>
+          <p class="pp-sub mt-3 max-w-3xl mx-auto">
+            This Privacy Policy explains how Your Team in Asia (YTA) ("we", "us", "our") processes your personal and company data in accordance with the General Data Protection Regulation (GDPR) and other applicable data protection laws.
+          </p>
+          <p class="pp-meta mt-2">
+            Last updated: <time datetime={org.lastUpdated}>{org.lastUpdated}</time>
+          </p>
+        </header>
+
+        <!-- Content -->
+          <!-- TOC -->
+          <!-- <aside class="lg:col-span-3">
+            <nav class="pp-toc sticky top-6">
+              <p class="pp-toc-title">On this page</p>
+              <ol class="pp-toc-list">
+                <li><a href="#who-we-are">1. Who we are</a></li>
+                <li><a href="#data-we-collect">2. Data Controller</a></li>
+                <li><a href="#how-we-use">3. How we use data</a></li>
+                <li><a href="#lawful-basis">4. Lawful basis</a></li>
+                <li><a href="#sharing">5. Sharing & transfers</a></li>
+                <li><a href="#retention">6. Retention</a></li>
+                <li><a href="#security">7. Security</a></li>
+                <li><a href="#your-rights">8. Your rights</a></li>
+                <li><a href="#cookies">9. Cookies</a></li>
+                <li><a href="#children">10. Children</a></li>
+                <li><a href="#changes">11. Changes</a></li>
+                <li><a href="#contact">12. Contact</a></li>
+              </ol>
+            </nav>
+          </aside> -->
+
+          <!-- Body -->
+          <article class="lg:col-span-9 pp-article space-y-10">
+            <section id="who-we-are" class="pp-card">
+              <h2>1. Who we are</h2>
+              <p>
+                {org.name} provides offshore hiring and workforce solutions. Our website is
+                {org.url}. Our Data Protection Officer can be contacted at:
+                <a href={`mailto:${org.email}`}>{org.email}</a> or by post at {org.address}.
+              </p>
+            </section>
+
+            <section id="data-we-collect" class="pp-card">
+              <h2>2. Data Controller</h2>
+              <ul class="pp-list">
+                 <li>Identity and contact data (name, email, phone number, job title)</li>
+                <li>Company information (name, address, registration details)</li>
+                <li>Business requirements (workforce needs, team structure)</li>
+                <li>Communication records (emails, calls, meetings)</li>
+                <li>Technical data (IP address, browser type, device information)</li>
+                <li>Usage data (how you use our website and services)</li>
+              </ul>
+            </section>
+
+            <section id="how-we-use" class="pp-card">
+              <h2>3. Personal Data We Process</h2>
+              <p class="pp-description">We process the following categories of personal data:</p>
+              <ul class="pp-list">
+                <li>Provide and improve our services, website, and customer support.</li>
+                <li>Respond to enquiries, process applications, and schedule consultations.</li>
+                <li>Security, fraud prevention, and to comply with legal obligations.</li>
+                <li>Send relevant updates or marketing (you can opt out anytime).</li>
+                <li>Analytics to understand performance and improve user experience.</li>
+              </ul>
+            </section>
+
+            <section id="lawful-basis" class="pp-card">
+              <h2>4. Legal Basis for Processing:</h2>
+              <p class="pp-description">We rely on one or more of the following lawful bases under GDPR/UK GDPR:</p>
+              <ul class="pp-list">
+                <li>Contract performance: Processing necessary for contracts we enter into with you</li>
+                <li>Legitimate interests: To provide and improve our services</li>
+                <li>Legal obligation: To comply with legal requirements</li>
+                <li>Consent: Where specifically requested and provided by you</li>
+              </ul>
+            </section>
+
+            <section id="sharing" class="pp-card">
+              <h2>5. Purposes of Processing</h2>
+              <p class="pp-description">We process your data for the following purposes:</p>
+             <ul class="pp-list">
+                <li>Understand your offshore workforce needs</li>
+                <li>Build and manage your offshore team</li>
+                <li>Handle recruitment and HR operations</li>
+                <li>Process payroll and administrative tasks</li>
+                <li>Improve our services and develop new features</li>
+                <li>Comply with legal and regulatory obligations</li>
+                <li>Prevent fraud and ensure security</li>
+                <li>Communicate with you about our services</li>
+            </ul>
+            </section>
+
+            <section id="retention" class="pp-card">
+              <h2>6. Data retention</h2>
+              <p class="pp-description">
+                We retain your personal data for as long as necessary to:
+              </p>
+              <ul class="pp-list">
+                <li>Provide our services to you</li>
+                <li>Comply with legal obligations</li>
+                <li>Resolve disputes</li>
+                <li>Enforce our agreements</li>
+            </ul>
+                <p class="mt-2">When data is no longer needed, it will be securely deleted or anonymized.</p>
+            </section>
+
+            <section id="security" class="pp-card">
+              <h2>7. International Transfers:</h2>
+              <p class="pp-description">
+               When we transfer data outside the UK/EEA, we ensure appropriate safeguards are in place through
+              </p>
+              <ul class="pp-list">
+                <li>Standard Contractual Clauses</li>
+                <li>Adequacy decisions</li>
+                <li>Other legal transfer mechanisms</li>
+            </ul>
+            </section>
+
+            <section id="your-rights" class="pp-card">
+              <h2>8. Your rights</h2>
+              <p class="pp-description">
+                Under GDPR, you have the following rights: To
+                exercise these rights, contact us at <a href={`mailto:${org.email}`}>{org.email}</a>.
+              </p>
+              <ul class="pp-list">
+                <li>Right to access your personal data</li>
+                <li>Right to rectification of inaccurate data</li>
+                <li>Right to erasure ('right to be forgotten')</li>
+                <li>Right to restrict processing</li>
+                <li>Right to data portability</li>
+                <li>Right to object to processing</li>
+                <li>Rights related to automated decision making</li>
+                <li>Right to withdraw consent</li>
+            </ul>
+            <p>To exercise your rights, contact our Data Protection Officer. We will respond within one month.</p>
+            <p>You have the right to lodge a complaint with a supervisory authority.</p>
+              <!-- <details class="pp-details">
+                <summary>California (CCPA/CPRA) notice</summary>
+                <p>
+                  California residents may request details about categories of personal info we
+                  collect, use, disclose, and sell/share (we do not sell personal info). You may
+                  exercise rights to know, delete, correct, and limit use of sensitive information.
+                </p>
+              </details> -->
+            </section>
+
+            <section id="cookies" class="pp-card">
+              <h2>9. Cookies</h2>
+              <p>
+                We use cookies and similar technologies to:
+              </p>
+              <table class="pp-table">
+                <thead><tr><th>Type</th><th>Purpose</th><th>Examples</th></tr></thead>
+                <tbody>
+                  <tr><td>Essential</td><td>Core site functionality, security</td><td>Session ID</td></tr>
+                  <tr><td>Analytics</td><td>Usage measurement, performance</td><td>Page views, events</td></tr>
+                  <tr><td>Marketing</td><td>Measure campaigns, retargeting</td><td>Ad platform pixels</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section id="changes" class="pp-card">
+              <h2>10. Changes to this policy</h2>
+              <p>
+                We may update this Privacy Policy periodically. We’ll update the “Last updated”
+                date above and, where required, provide additional notice.
+              </p>
+            </section>
+
+            <section id="contact" class="pp-card">
+              <h2>11. Contact us</h2>
+              <address class="not-italic">
+                <strong>{org.name}</strong><br />
+                {org.address}<br />
+                <a href={`mailto:${org.email}`}>{org.email}</a>
+              </address>
+            </section>
+
+            <div class="text-center">
+              <a href="#top" class="pp-backtop">Back to top ↑</a>
+            </div>
+          </article>
+     
+      </div>
+    </main>
+    </Layout>
