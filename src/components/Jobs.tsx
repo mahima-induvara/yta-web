@@ -1,8 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import memeber1 from '@assets/team/member-1.png'
-import memeber2 from '@assets/team/member-2.png'
-import memeber3 from '@assets/team/member-3.png'
-import memeber4 from '@assets/team/member-4.png'
 import {EXPERT} from '../data/source';
 export interface Job {
   title: string;

@@ -1,10 +1,10 @@
-import memeber1 from "@assets/team/member-1.png";
-import memeber2 from "@assets/team/member-2.png";
-import memeber3 from "@assets/team/member-3.png";
-import memeber4 from "@assets/team/member-4.png";
-import memeber5 from "@assets/team/member-5.png";
-import memeber6 from "@assets/team/member-6.png";
-import memeber7 from "@assets/team/member-7.png";
+import memeber1 from "@assets/team/madhura.png";
+import memeber2 from "@assets/team/mahima.png";
+import memeber3 from "@assets/team/kanishka.png";
+import memeber4 from "@assets/team/kalpa.png";
+import memeber5 from "@assets/team/pasandi.png";
+import memeber6 from "@assets/team/proushth.png";
+import memeber7 from "@assets/team/peruka.png";
 
 export const EXPERT = [
   {

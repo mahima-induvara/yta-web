@@ -4,20 +4,16 @@ import "@styles/about.scss";
 import ContactDrawer from "@components/ContactDrawer";
 import faces from "@assets/faces.png";
 import team from "@assets/about-img-full.png";
-import member1 from "@assets/team/member-1.png";
-import member2 from "@assets/team/member-2.png";
-import member3 from "@assets/team/member-3.png";
-import member4 from "@assets/team/member-4.png";
-import member5 from "@assets/team/member-5.png";
-import member6 from "@assets/team/member-6.png";
-import member7 from "@assets/team/member-7.png";
 import RowTeam from "@assets/team-row.png";
 import TharakaImg from "@assets/tharaka.jpg";
 import Img2017 from "@assets/2017.png";
 import Img2020 from "@assets/2020.png";
 import Img2022 from "@assets/2022.png";
 import Img2025 from "@assets/2025.png";
-import client1 from "@assets/client-1.png";
+import Mewan from "@assets/mewan.png";
+import Nirmani from "@assets/nirmani.png";
+import Trevon from "@assets/trevon.png";
+import {EXPERT} from '../data/source';
 import TeamA from "@assets/left-team.png";
 import TeamB from "@assets/right-team.png";
 
@@ -31,15 +27,7 @@ interface Props {
 const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
 const { imgSrc = team.src, imgAlt = "Happy remote team" } = Astro.props;
 
-const experts = [
-  { name: "Emily Chen", role: "Marketing", img: member1.src },
-  { name: "Emily Chen", role: "Admin support", img: member2.src },
-  { name: "Emily Chen", role: "Software development", img: member3.src },
-  { name: "Emily Chen", role: "Marketing", img: member4.src },
-  { name: "Emily Chen", role: "Admin support", img: member5.src },
-  { name: "Emily Chen", role: "Software development", img: member6.src },
-  { name: "Emily Chen", role: "Marketing", img: member7.src },
-];
+
 
 const industriesWithDetails = [
   {
@@ -263,15 +251,15 @@ const {
       <div id="experts-scroll" class="swiper experts-scroll">
         <div class="swiper-wrapper">
         {
-          experts.map((exp) => (
+          EXPERT.map((exp) => (
             <div class="expert-card swiper-slide">
               <div class="ex-wrapper">
-                <img src={exp.img} alt={exp.name} class="expert-img" />
+                <img src={exp.img.src} alt={exp.name} class="expert-img" />
               </div>
               <hr class="border-t border-[#000]" />
               <div class="expert-info">
                 <h3>{exp.name}</h3>
-                <p>{exp.role}</p>
+                <p>{exp.job_category}</p>
               </div>
             </div>
           ))
@@ -389,7 +377,7 @@ const {
       <div class="team-leaders grid grid-cols-1 md:grid-cols-3 gap-12">
         <div class="relative card-teams">
           <img
-            src={client1.src}
+            src={Nirmani.src}
             alt={name}
             class="w-full h-[587px] object-cover object-top rounded-xl card-img"
           />
@@ -398,10 +386,10 @@ const {
             class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
           >
             <div class="bottom-wrapper">
-              <h3 class="text-xl">Jordan Lee</h3>
-              <p class="text-sm">CTO, Co-Founder</p>
+              <h3 class="text-xl">Nirmani De Alwis</h3>
+              <p class="text-sm">CEO @ Your Team in Asia</p>
             </div>
-            <a href="#jordan-lee" class="icon">
+            <a href="https://www.linkedin.com/in/nirmani-jayaweera-de-alwis-4172065b/" class="icon" target="_blank" rel="noopener">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -418,7 +406,7 @@ const {
         </div>
         <div class="relative card-teams">
           <img
-            src={client1.src}
+            src={Mewan.src}
             alt={name}
             class="w-full h-[587px] object-cover object-top rounded-xl card-img"
           />
@@ -427,10 +415,10 @@ const {
             class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
           >
             <div class="bottom-wrapper">
-              <h3 class="text-xl">Jordan Lee</h3>
-              <p class="text-sm">CTO, Co-Founder</p>
+              <h3 class="text-xl">Mewan Fernando</h3>
+              <p class="text-sm">Assistant General Manager</p>
             </div>
-            <a href="#jordan-lee" class="icon">
+            <a href="https://www.linkedin.com/in/mewanfernando/" class="icon" target="_blank" rel="noopener">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -447,7 +435,7 @@ const {
         </div>
         <div class="relative card-teams">
           <img
-            src={client1.src}
+            src={Trevon.src}
             alt={name}
             class="w-full h-[587px] object-cover object-top rounded-xl card-img"
           />
@@ -456,10 +444,10 @@ const {
             class="absolute w-full flex justify-between items-center bottom-0 left-0 text-white card-text-bottom"
           >
             <div class="bottom-wrapper">
-              <h3 class="text-xl">Jordan Lee</h3>
-              <p class="text-sm">CTO, Co-Founder</p>
+              <h3 class="text-xl">Trevon Mark</h3>
+              <p class="text-sm">Head of HR Operations</p>
             </div>
-            <a href="#jordan-lee" class="icon">
+            <a href="https://www.linkedin.com/in/trevon-mark-36451a172/" class="icon" target="_blank" rel="noopener">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

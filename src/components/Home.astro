@@ -215,16 +215,20 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       modules: [Autoplay],
       loop: true,
       slidesPerView: 'auto',
-      spaceBetween: 0,
+      spaceBetween: 80,
       speed: 5000, 
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
       },
       breakpoints: {
-        0: { slidesPerView: 2 },
-        640: { slidesPerView: 4 },
-        1024: { slidesPerView: 7 },
+        0: { slidesPerView: 2,
+          spaceBetween: 10
+         },
+        640: { slidesPerView: 4,
+          spaceBetween: 30
+        },
+        1024: { slidesPerView: 7},
       },
     });
   </script>
