@@ -318,15 +318,21 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
 
               <h5 className="font-semibold mb-2">Our industry expert</h5>
               <div className="expert-wrapper mt-2">
-                {EXPERT.filter((e) => e.job_category === job.department).map((exp) => (
-                  <div key={exp.id} className="expert-card">
-                    <img src={exp.img.src} alt={exp.name} className="expert-img" />
-                    <div className="expert-info">
-                      <h6 className="font-semibold">{exp.name}</h6>
-                      <p className="text-sm">Years of experience: 0{exp.experience}</p>
+                {(() => {
+                  const filtered = EXPERT.filter((e) => e.job_category === job.department);
+                  const randomMember = filtered[Math.floor(Math.random() * filtered.length)];
+                  return randomMember ? (
+                    <div key={randomMember.id} className="expert-card">
+                      <img src={randomMember.img.src} alt={randomMember.name} className="expert-img" />
+                      <div className="expert-info">
+                        <h6 className="font-semibold">{randomMember.name}</h6>
+                        <p className="text-sm">
+                          Years of experience: 0{randomMember.experience}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ) : null;
+                })()}
               </div>
               {/* <ul className="jr-list space-y-2 text-sm">
                 {job.responsibilities.map((r: any, i: number) => (
