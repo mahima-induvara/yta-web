@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import {EXPERT} from '../data/source';
 export interface Job {
   title: string;
@@ -16,44 +16,54 @@ export interface PillProps {
 }
 
 export default function Jobs({ jobs }: { jobs: Job[] }) {
-  const [jobData, setJobData] = useState<Job[]>([]);
   const [active, setActive] = useState("All Categories");
-  const [category, setCategory] = useState<string>("All Categories");
+  const [icon, setIcon] = useState<boolean>(true);
 
-  // useEffect(() => {
-  //   setJobData(jobs);
-  //   //console.log(jobs);
-  // }, [jobs]);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // const getCategoryJobs = (category: string) => {
-  //     setCategory(category);
-  //     if (category === "All Categories") {
-  //         setJobData(jobs);
-  //     } else {
-  //         const filteredJobs = jobs.filter(job => job.department === category);
-  //         setJobData(filteredJobs);
-  //     }
-  // };
 
-  // const categories = [
-  //   "All Categories",
-  //   "Contact Center",
-  //   "Cyber Security",
-  //   "Designers",
-  //   "Finance & Accounting",
-  //   "HR Operations",
-  //   "IT Operations",
-  //   "Legal Admin",
-  //   "Marketing",
-  //   "Software Development",
-  //   "Virtual Assistants",
-  // ];
+    const handleScrollRight = () => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+
+        const isScrolledToEnd = 
+          container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+
+        if (isScrolledToEnd) {
+          setIcon(true);
+          container.scrollLeft = 0;
+        } else {
+          setIcon(false);
+          container.scrollLeft = container.scrollWidth;
+        }
+      }
+    };
 
   const visibleJobs = useMemo(() => {
-    if (active === "All Categories") return setJobData(jobs);
-    const filteredJobs = jobs.filter((j) => j.department.includes(active));
-    setJobData(filteredJobs);
-  }, [active]);
+    if (active === "All Categories") return jobs;
+    return jobs.filter((j) => j.department.includes(active));
+  }, [jobs, active]);
+
+
+  function ExpertCard({ department }: { department: string }) {
+    const chosen = useMemo(() => {
+      const filtered = EXPERT.filter((e) => e.job_category === department);
+      if (!filtered || filtered.length === 0) return null;
+      return filtered[Math.floor(Math.random() * filtered.length)];
+    }, [department]);
+
+    if (!chosen) return null;
+
+    return (
+      <div key={chosen.id} className="expert-card">
+        <img src={chosen.img.src} alt={chosen.name} className="expert-img" />
+        <div className="expert-info">
+          <h6 className="font-semibold">{chosen.name}</h6>
+          <p className="text-sm">Years of experience: {chosen.experience < 10 ? `0${chosen.experience}` : `${chosen.experience}`}</p>
+        </div>
+      </div>
+    );
+  }
 
   const CATEGORIES = [
     {
@@ -189,7 +199,8 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 gap-10 mt-[24px] lg:mt-[64px] mb-[65px] lg:mb-[135px]">
       {/* Pills */}
-      <div className="rf-pills">
+      <div className="cat-wrapper flex items-center justify-between gap-[16px]">
+      <div ref={scrollContainerRef} className="rf-pills">
         {CATEGORIES.map((cat) => (
           <Pill
             key={cat.id}
@@ -200,6 +211,20 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
           />
         ))}
       </div>
+      <button onClick={handleScrollRight} className="cursor-pointer" aria-label="Scroll right" >
+        {icon ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5271FF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10.74 15.53L14.26 12L10.74 8.46997" stroke="#5271FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        ) : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="#5271FF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13.26 8.47003L9.74001 12L13.26 15.53" stroke="#5271FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>}
+      </button>
+      </div>
+
+
       {/* <aside className="lg:col-span-3">
           <div className="jr-first-section">
             <h3 className="jr-heading">Categories</h3>
@@ -231,7 +256,7 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
 
       <div className="lg:col-span-9">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {jobData.map((job, index) => (
+    {visibleJobs.map((job: Job, index: number) => (
             <article key={index} className="jr-card rounded-2xl p-5">
               <h4 className="jr-title">{job.title}</h4>
               <p className="jr-benefit">
@@ -318,21 +343,7 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
 
               <h5 className="font-semibold mb-2">Our industry expert</h5>
               <div className="expert-wrapper mt-2">
-                {(() => {
-                  const filtered = EXPERT.filter((e) => e.job_category === job.department);
-                  const randomMember = filtered[Math.floor(Math.random() * filtered.length)];
-                  return randomMember ? (
-                    <div key={randomMember.id} className="expert-card">
-                      <img src={randomMember.img.src} alt={randomMember.name} className="expert-img" />
-                      <div className="expert-info">
-                        <h6 className="font-semibold">{randomMember.name}</h6>
-                        <p className="text-sm">
-                          Years of experience: 0{randomMember.experience}
-                        </p>
-                      </div>
-                    </div>
-                  ) : null;
-                })()}
+                <ExpertCard department={job.department} />
               </div>
               {/* <ul className="jr-list space-y-2 text-sm">
                 {job.responsibilities.map((r: any, i: number) => (
@@ -388,7 +399,7 @@ export default function Jobs({ jobs }: { jobs: Job[] }) {
             </article>
           ))}
         </div>
-        {category === "All Categories" && (
+  {active === "All Categories" && (
           <div className="mt-[32px] text-center">
             <p className="mb-[16px] view-more">Click the button below to see more openings</p>
             <a

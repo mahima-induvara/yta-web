@@ -885,13 +885,15 @@ line-height: 21px; /* 131.25% */
 
 
 /* Pills row */
+.cat-wrapper{
+  margin-bottom: 24px;
+}
 .rf-pills {
   display: flex;
   justify-content: start;
   gap: 8px;
   flex-wrap: nowrap;
   padding: .25rem;
-  margin-bottom: 1rem;
   overflow-x: scroll;
   scrollbar-width: none;
   scrollbar-color: rgba($brand,.6) rgba(0,0,0,.15);

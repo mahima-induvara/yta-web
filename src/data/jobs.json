@@ -1,18 +1,5 @@
 [
   {
-    "id": "rec0obuOEMfG3fYEv",
-    "Job_Title": "Executive Assistant & Project Associate",
-    "Salary_Range_SL": "£40k - £65k",
-    "Salary_Range_UK": "£60k - £85k",
-    "Status": "Publish",
-    "Save_Up": 40,
-    "Job_Type": "Full-Time",
-    "Job_Work_Mode": "Remote",
-    "Job_Department": "Legal Admin",
-    "Job_Responsibilities": "Make outbound calls to potential customers\nPresent and upsell products or services\nRecord call outcomes and notes in CRM\nAchieve weekly/monthly sales targets\n",
-    "updatedAt": "2025-10-10T16:37:12.000Z"
-  },
-  {
     "id": "recAoMiyhztwsyzir",
     "Job_Title": "Digital Marketing Specialist",
     "Salary_Range_SL": "£40k - £60k",
@@ -23,6 +10,10 @@
     "Job_Work_Mode": "Hybrid",
     "Job_Department": "Marketing",
     "Job_Responsibilities": "Develop and execute digital marketing campaigns\nManage social media presence across platforms\nCreate and optimize paid advertising campaigns\nAnalyze campaign performance and ROI\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/recAoMiyhztwsyzir?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   },
   {
@@ -36,6 +27,10 @@
     "Job_Work_Mode": "Remote",
     "Job_Department": "Contact Center",
     "Job_Responsibilities": "Monitor inbound and outbound calls for quality\nScore agent interactions based on QA metrics\nProvide coaching feedback to agents\nIdentify trends in customer issues\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/recE5jFcCsIKAgISV?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   },
   {
@@ -49,6 +44,10 @@
     "Job_Work_Mode": "Remote",
     "Job_Department": "Software Development",
     "Job_Responsibilities": "Develop custom WordPress themes and plugins\nCreate and maintain e-commerce solutions using WooCommerce\nImplement security best practices and optimizations\nBuild custom integrations and APIs\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/recLihVjNiCWazLAc?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   },
   {
@@ -62,6 +61,10 @@
     "Job_Work_Mode": "Remote",
     "Job_Department": "Software Development",
     "Job_Responsibilities": "Analyze security alerts and escalate incidents\nMonitor logs and event data\nInvestigate suspicious activity\nCollaborate with IT teams for remediation\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/recOY3cwtqzQga4jX?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   },
   {
@@ -75,6 +78,10 @@
     "Job_Work_Mode": "Remote",
     "Job_Department": "Finance & Accounting",
     "Job_Responsibilities": "Maintain accurate financial records\nPerform bank reconciliations\nProcess and record financial transactions\nAssist with month-end closing procedures\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/recYjhqRQuJc1VqRE?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   },
   {
@@ -88,6 +95,10 @@
     "Job_Work_Mode": "Remote",
     "Job_Department": "Virtual Assistants",
     "Job_Responsibilities": "Manage personal and professional schedules\nHandle correspondence and communications\nOrganize personal and business tasks\nBook travel and accommodation\n",
+    "Submit": {
+      "label": "Button",
+      "url": "https://airtable.com/tblCvK4vZK3H7Wodq/rechHGGuaABGJCyH6?blocks=blixLerPCz4wcSuWr"
+    },
     "updatedAt": "2025-10-10T16:37:12.000Z"
   }
 ]
