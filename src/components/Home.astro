@@ -283,7 +283,7 @@ const { ctaHref = "/quote", ctaText = "Get a free quote" } = Astro.props;
       <p class="hiw-lead-left mt-[8px]">
         Our diverse, global talent helps clients transform every aspect of their business and achieve exceptional results. Submit a custom job description and we'll help you find the perfect candidate. please <a href="#/contact">contact us.</a></p>
     </div>
-    <JobComponent jobs={jobs.slice(0, 6)} client:load />
+    <JobComponent jobs={jobs.slice(0, 6)} client:only="react" />
 </section>
 
 <section class="pricing-root relative overflow-hidden">
@@ -762,34 +762,86 @@ quickly hire skilled developers, enabling rapid development of our enterprise ca
   </div>
 </section>
 
-  <script is:inline>
-      const slider = document.querySelector('.rf-pills');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+<script is:inline>
+  (function () {
+    // Initialize the draggable slider when the element exists.
+    // Guards: wait for element, avoid double-init, add touch support.
+    function setupSlider(el) {
+      if (!el || el.dataset.rfInit === '1') return;
+      el.dataset.rfInit = '1';
 
-        slider.addEventListener('mousedown', (e) => {
-          isDown = true;
-          slider.classList.add('active');
-          startX = e.pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        });
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
 
-        slider.addEventListener('mouseleave', () => {
-          isDown = false;
-          slider.classList.remove('active');
-        });
+      el.addEventListener('mousedown', (e) => {
+        isDown = true;
+        el.classList.add('active');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      });
 
-        slider.addEventListener('mouseup', () => {
-          isDown = false;
-          slider.classList.remove('active');
-        });
+      el.addEventListener('mouseleave', () => {
+        isDown = false;
+        el.classList.remove('active');
+      });
 
-        slider.addEventListener('mousemove', (e) => {
-          if(!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - slider.offsetLeft;
-          const walk = (x - startX) * 1; // scroll speed
-          slider.scrollLeft = scrollLeft - walk;
-        });
-  </script>
+      el.addEventListener('mouseup', () => {
+        isDown = false;
+        el.classList.remove('active');
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - el.offsetLeft;
+        const walk = x - startX; // scroll speed
+        el.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch support
+      el.addEventListener('touchstart', (e) => {
+        const t = e.touches && e.touches[0];
+        if (!t) return;
+        startX = t.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      }, { passive: true });
+
+      el.addEventListener('touchmove', (e) => {
+        const t = e.touches && e.touches[0];
+        if (!t) return;
+        const x = t.pageX - el.offsetLeft;
+        const walk = x - startX;
+        el.scrollLeft = scrollLeft - walk;
+      }, { passive: true });
+    }
+
+    function waitForSelector(selector, cb) {
+      const el = document.querySelector(selector);
+      if (el) return cb(el);
+
+      const mo = new MutationObserver((_, observer) => {
+        const found = document.querySelector(selector);
+        if (found) {
+          observer.disconnect();
+          cb(found);
+        }
+      });
+
+      mo.observe(document.body, { childList: true, subtree: true });
+
+      // Fallback: stop observing after 5s and try one last time
+      setTimeout(() => {
+        try { mo.disconnect(); } catch (e) {}
+        const fallback = document.querySelector(selector);
+        if (fallback) cb(fallback);
+      }, 5000);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => waitForSelector('.rf-pills', setupSlider));
+    } else {
+      waitForSelector('.rf-pills', setupSlider);
+    }
+  })();
+</script>

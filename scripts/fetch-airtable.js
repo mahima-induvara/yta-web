@@ -15,7 +15,7 @@ const outFile = path.resolve("src/data/jobs.json");
 
 async function fetchAll() {
   const all = [];
-  let url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}?pageSize=100&filterByFormula={Select}='Publish'`;
+  let url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}?pageSize=100&filterByFormula={Status}='Publish'`;
   const headers = { Authorization: `Bearer ${token}` };
 
   while (url) {

@@ -7,9 +7,10 @@ export const POST: APIRoute = async ({ request }) => {
     const { baseName, data } = await request.json();
     const AIRTABLE_URL =
       import.meta.env.AIRTABLE_BASE ??
-      "https://api.airtable.com/v0/appXbH7VtbIpkpaLD/";
+      "https://api.airtable.com/v0/";
+    const AIRTABLEBASEID = import.meta.env.AIRTABLE_BASE_ID;
 
-    const response = await axios.post(`${AIRTABLE_URL}${baseName}`, data, {
+    const response = await axios.post(`${AIRTABLE_URL}${AIRTABLEBASEID}/${baseName}`, data, {
       headers: {
         Authorization: `Bearer ${import.meta.env.AIRTABLE_TOKEN}`,
         "Content-Type": "application/json",

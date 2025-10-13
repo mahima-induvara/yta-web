@@ -15,7 +15,9 @@ export default function ContactForm() {
     const url = new URL(window.location.href);
     const s = url.searchParams.get("subject") || "";
     const a = url.searchParams.get("getStarted") || "";
+    const jr = url.searchParams.get("searchFor") || "";
     if (s) setForm({ ...form, subject: s });
+    if (jr) setForm({ ...form, subject: `I am looking for a ${jr} role.` });
     if (a === "true") window.scrollTo({ top: 750, left: 0, behavior: 'smooth' });
 
   }, []);
@@ -76,7 +78,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
+    //console.log("Form submitted:", form);
     const airtableResultId = await saveToAirtable(
       transformToAirtable(form),
       "Contact_Leads"
@@ -94,7 +96,7 @@ export default function ContactForm() {
         message: "",
         consent: false,
       });
-      console.log(airtableResultId);
+      //console.log(airtableResultId);
     }
   };
 
@@ -260,8 +262,8 @@ export default function ContactForm() {
           className="submit-btn w-full bg-white text-[#5271FF] py-3 rounded-lg font-semibold hover:opacity-85 transition flex items-center justify-center gap-2"
         >
           Send message <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-  <path d="M4.66699 10H16.3337" stroke="#5271FF" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10.5 4.16699L16.3333 10.0003L10.5 15.8337" stroke="#5271FF" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.66699 10H16.3337" stroke="#5271FF" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M10.5 4.16699L16.3333 10.0003L10.5 15.8337" stroke="#5271FF" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
         </button>
         {error && <p className="text-sm text-red-600">{error}</p>}
