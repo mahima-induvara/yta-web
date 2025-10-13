@@ -21,7 +21,7 @@ const REGIONS = [
   {
     id: "uk",
     name: "United Kingdom (20)",
-    desc: "uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+    desc: "Collaborating with top UK brands to create digital solutions that enhance healthcare, education, and business operations with measurable impact.",
     bg: UK.src,
     logos: [
       Logo1.src,
@@ -37,21 +37,21 @@ const REGIONS = [
   {
     id: "usa",
     name: "United States of America (2)",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "Partnering with innovative U.S. companies to deliver advanced digital systems that boost efficiency, customer satisfaction, and long-term business growth.",
     bg: USA.src,
     logos: [Logo6.src, Logo12.src],
   },
   {
     id: "uae",
     name: "United Arab Emirates (2)",
-    desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    desc: "Empowering UAE enterprises with tailored digital and logistics solutions that ensure quality, reliability, and strong market competitiveness.",
     bg: UAE.src,
     logos: [Logo8.src, Logo13.src],
   },
   {
     id: "tz",
     name: "Tanzania (1)",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+    desc: "Supporting Tanzanian businesses with scalable digital solutions designed to drive growth, sustainability, and improved operational performance.",
     bg: Tanzania.src,
     logos: [Logo7.src],
   },
@@ -118,6 +118,9 @@ const REGIONS = [
       border-radius: 0.5rem;
       overflow: hidden;
       height: 350px;
+      @include mobile {
+        margin-bottom: 64px;
+      }
 
       img.bg {
         width: 100%;
