@@ -724,9 +724,10 @@ font-weight: 500;
 line-height: 24px;
 }
 .faq-caret {
-  width: 22px; height: 22px;
+  width: 22px; 
+  height: 22px;
   stroke: $ink;
-  transition: transform .2s ease;
+  transition: transform 0s ease;
 }
 
 /* Panel (animated open/close) */
@@ -734,7 +735,14 @@ line-height: 24px;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: max-height .28s ease, opacity .28s ease, margin-top .28s ease;
+  // transition:
+  //   max-height .28s ease,
+  //   opacity .28s ease,
+  //   margin-top .28s ease,
+  //   padding .28s ease,
+  //   background .28s ease,
+  //   border .28s ease;
+  // transition: max-height .28s ease, opacity .28s ease, margin-top .28s ease;
   margin-top: 0;
   border-radius: 32px;
 }
@@ -742,7 +750,7 @@ line-height: 24px;
   background: $card-bg;
   padding: 24px;
   margin-top: -30px;
-  max-height: 500px; /* large enough to show content */
+  max-height: 500px;
   opacity: 1;
 }
 .faq-panel .faq-a {

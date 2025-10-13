@@ -397,7 +397,7 @@ line-height: 24px;
 .faq-caret {
   width: 22px; height: 22px;
   stroke: $ink;
-  transition: transform .2s ease;
+  transition: transform 0s ease;
 }
 
 /* Panel (animated open/close) */
@@ -405,7 +405,7 @@ line-height: 24px;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: max-height .28s ease, opacity .28s ease, margin-top .28s ease;
+  // transition: max-height .28s ease, opacity .28s ease, margin-top .28s ease;
   margin-top: 0;
   border-radius: 32px;
 }
