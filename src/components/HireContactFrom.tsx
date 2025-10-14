@@ -84,7 +84,7 @@ export default function HireContactForm() {
         message: "",
         consent: false,
       });
-      console.log(airtableResultId);
+      //console.log(airtableResultId);
     }
   };
   
