@@ -54,6 +54,7 @@ export default function HireContactForm() {
             Name: airtableData.name,
             WorkEmail: airtableData.email,
             Mobile: airtableData.phone,
+            Subject: 'From Hire Page',
             Description: airtableData.message,
             Consent: airtableData.consent ? "Yes" : "No",
           },
@@ -65,7 +66,7 @@ export default function HireContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log("Form submitted:", form);
+    //console.log("Form submitted:", form);
     const airtableResultId = await saveToAirtable(
       transformToAirtable(form),
       "Contact_Leads"

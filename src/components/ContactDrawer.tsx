@@ -27,6 +27,7 @@ export default function ContactDrawer() {
             Name: airtableData.name,
             WorkEmail: airtableData.email,
             Mobile: airtableData.phone,
+            Subject: 'From Website CTA',
             Description: airtableData.message,
             Consent: airtableData.consent ? "Yes" : "No",
           },
