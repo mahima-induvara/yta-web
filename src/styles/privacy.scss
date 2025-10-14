@@ -58,6 +58,12 @@ $card:  #ffffff;
 .pp-list { margin: .5rem 0 0 0; display: grid; gap: .35rem; color: $muted; padding-left: 1.2rem;
   li { list-style: inside disc; }
 }
+.pp-list-terms{
+  display: flex; flex-direction: column;
+  gap: 8px;
+  margin: .5rem 0 0 0; padding-left: 1.2rem; color: $muted;
+  list-style: none;
+}
 
 /* Table */
 .pp-table {
