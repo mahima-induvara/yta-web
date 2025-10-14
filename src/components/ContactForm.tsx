@@ -76,6 +76,12 @@ export default function ContactForm() {
     setForm({ ...form, [name]: value });
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const mobilenum = e.target.value.toLowerCase();
+    const sanitized = mobilenum.replace(/[^0-9]/g, '');
+    setForm({ ...form, phone: sanitized });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //console.log("Form submitted:", form);
@@ -99,7 +105,6 @@ export default function ContactForm() {
       //console.log(airtableResultId);
     }
   };
-
   return (
     <div className="contact-area relative max-w-7xl mx-auto text-white py-[32px] grid lg:grid-cols-2 gap-10">
       {/* Left content */}
@@ -194,11 +199,12 @@ export default function ContactForm() {
               Phone
             </label>
             <input
-              type="number"
+              type="text"
               name="phone"
               placeholder="Enter your phone number"
               value={form.phone}
-              onChange={handleChange}
+              maxLength={11}
+              onChange={handlePhoneChange}
               className="form-input"
             />
           </div>

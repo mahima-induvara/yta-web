@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Loader from "@components/Loader";
 interface FormData {
   name: string;
   email: string;
@@ -9,6 +10,7 @@ interface FormData {
 export default function HireContactForm() {
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -62,15 +64,18 @@ export default function HireContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log("Form submitted:", form);
     const airtableResultId = await saveToAirtable(
       transformToAirtable(form),
       "Contact_Leads"
     );
     if (!airtableResultId) {
+      setIsLoading(false);
       setError("Something went wrong. Please try again.");
       throw new Error("Failed to save to Airtable");
     } else {
+      setIsLoading(false);
       setSuccess(true);
       setForm({
         name: "",
@@ -86,7 +91,9 @@ export default function HireContactForm() {
 
 
   return (
-    <form className="yta-form space-y-5" onSubmit={handleSubmit}>
+
+    <form className="yta-form space-y-5 relative" onSubmit={handleSubmit}>
+      {isLoading && <Loader />}
       <div className="grid sm:grid-cols-2 gap-4">
         <label className="flex-col items-start">
           Full name

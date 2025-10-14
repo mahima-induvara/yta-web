@@ -303,11 +303,7 @@ const faqs: QA[] = [
             autoplay
             loop
             playsinline
-            muted
             class="w-full h-full object-cover"></video>
-
-       
-
         </div>
       </div>
 
@@ -801,8 +797,7 @@ const faqs: QA[] = [
   </section>
   
   <script>
-    // Video play/pause toggle for the phone mockup
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
   var wrapper = document.querySelector('.video-wrapper');
   var videoEl = document.getElementById('ytav-video');
   var toggle = document.getElementById('ytav-toggle');
@@ -812,7 +807,6 @@ const faqs: QA[] = [
 
   var v = videoEl;
 
-      // Ensure we start with correct state classes
       function updateState() {
         if (!wrapper || !toggle) return;
         if (v.paused) {
@@ -825,26 +819,17 @@ const faqs: QA[] = [
           toggle.setAttribute('aria-label', 'Pause video');
         }
       }
-
-      // If autoplay is set but browser blocks it, start muted so it can autoplay
-      try {
-        if (v.autoplay && v.paused && !v.muted) {
-          v.muted = true;
-        }
-      } catch (e) {
-        // ignore
-      }
-
       updateState();
 
       toggle.addEventListener('click', function (e) {
         e.preventDefault();
         if (v.paused) {
+          try { v.muted = false; } catch (err) { /* ignore */ }
+
           v.play().catch(function () {
-            // play might be blocked; ensure muted and try again
-            v.muted = true;
+            try { v.muted = true; } catch (e) { /* ignore */ }
             v.play().catch(function () {
-              // ignore
+              // ignore further failures
             });
           });
         } else {
@@ -853,7 +838,6 @@ const faqs: QA[] = [
         updateState();
       });
 
-      // keep UI in sync if playback changes via other means
       v.addEventListener('play', updateState);
       v.addEventListener('pause', updateState);
     });

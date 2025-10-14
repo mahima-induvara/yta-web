@@ -62,6 +62,12 @@ export default function ContactDrawer() {
     setForm({ ...form, [name]: value });
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const mobilenum = e.target.value.toLowerCase();
+    const sanitized = mobilenum.replace(/[^0-9]/g, '');
+    setForm({ ...form, phone: sanitized });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Submitted:", form);
@@ -170,7 +176,7 @@ export default function ContactDrawer() {
                 name="phone"
                 value={form.phone}
                 placeholder="Enter your phone number"
-                onChange={handleChange}
+                onChange={handlePhoneChange}
                 className="form-input"
               />
             </div>
