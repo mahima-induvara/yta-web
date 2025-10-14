@@ -60,7 +60,7 @@ input[type="checkbox"] {
   }
 
   .off-canvas-body {
-    min-height: calc(100vh - 124px); 
+    height: calc(100vh - 124px); 
     padding: 24px 32px;
     border-radius: 24px;
     background: url('../assets/blue-dashed-light.svg');

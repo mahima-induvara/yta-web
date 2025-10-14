@@ -133,7 +133,7 @@ export default function ContactDrawer() {
           </button>
         </div>
         <div className="off-canvas-wrapper p-6">
-        <div className="off-canvas-body  overflow-y-auto text-left">
+        <div className="off-canvas-body overflow-y-auto text-left">
           <h3 className="text-2xl font-bold text-[#5271FF] mb-2">
             We make it easy to recruit globally
           </h3>
