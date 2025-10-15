@@ -160,7 +160,7 @@ export default function HireContactForm() {
           Asia (YTA) about its products, services, events and/or information,
           including latest information on hiring and employment trends. I have
           read and accept for my personal data to be processed in accordance
-          with YTA’s Privacy Policy.
+          with YTA’s <a className="underline" href="/privacy-policy">Privacy Policy</a>.
         </span>
       </label>
 
