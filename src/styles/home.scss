@@ -26,7 +26,17 @@ $white: #ffffff;
     margin-bottom: 8px;
     line-height: 73px; /* 130.357% */
     letter-spacing: -0.56px;
-
+    @media only screen
+      and (width: 1024px)
+      and (height: 1366px)
+      and (-webkit-min-device-pixel-ratio: 2),
+    only screen
+      and (width: 1024px)
+      and (height: 1366px)
+      and (min-resolution: 192dpi) {
+      font-size: 42px;
+      line-height: 63px; 
+    }
     @include mobile {
       text-align: center;
       font-size: 36px;
